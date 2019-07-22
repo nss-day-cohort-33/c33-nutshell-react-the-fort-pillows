@@ -1,5 +1,6 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
+import API from '../module/API'
 
 export default class ApplicationViews extends Component {
   render() {

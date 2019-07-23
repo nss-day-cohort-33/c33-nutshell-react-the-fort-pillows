@@ -17,6 +17,7 @@ export default class Messages extends Component {
     }
 
     handleKeyPress = event => {
+        event.preventDefault();
         if (event.key === "Enter") {
             console.log("you pressed enter")
             const message = {
@@ -28,7 +29,7 @@ export default class Messages extends Component {
                 .then(() => this.props.history.push("/"))
         }
     }
-    handleKeyPress = event => {
+    handleClick = event => {
         event.preventDefault();
         console.log("you clicked")
         const message = {
@@ -66,8 +67,8 @@ render() {
                                 type="text"
                                 autoFocus
                                 placeholder="Got something to say?"
-                                onChange={this.handleFieldChange}
-                                onKeyUp={this.handleKeyPress}>
+                                onKeyDown={event => this.handleKeyPress}
+                                onChange={this.handleFieldChange}>
                             </Input>
                             <Button
                                 icon
@@ -84,3 +85,5 @@ render() {
     )
 }
 }
+
+// onKeyUp={this.handleKeyPress}>

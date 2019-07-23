@@ -1,6 +1,7 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import API from '../module/API'
+import Tasks from "./tasks/Tasks";
 
 export default class ApplicationViews extends Component {
   render() {
@@ -39,6 +40,9 @@ export default class ApplicationViews extends Component {
         <Route
           path="/tasks"
           render={props => {
+            //FIXME: Copied from Kennel...need more functionality than a delete
+            // return <Tasks editTask={this.editTask}
+            //               tasks={this.state.tasks} />
             return null;
           }}
         />

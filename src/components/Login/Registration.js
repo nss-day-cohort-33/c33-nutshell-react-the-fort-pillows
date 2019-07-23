@@ -4,7 +4,7 @@ import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui
 import { Link } from "react-router-dom"
 import API from "../../module/API"
 
-class RegistrationForm extends Component {
+class Register extends Component {
 
     state = {
         username: "",
@@ -89,4 +89,4 @@ class RegistrationForm extends Component {
     }
 }
 
-export default RegistrationForm
+export default Register

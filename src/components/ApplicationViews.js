@@ -2,44 +2,26 @@ import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import API from '../module/API'
 import Tasks from "./tasks/Tasks";
-import RegistrationForm from "./Login/Registration";
+import Register from "./Login/Registration";
+import Login from "./Login/Login"
+import Messages from "./messages/Messages"
 
 export default class ApplicationViews extends Component {
 
-addUser = user =>
-  API.post("user", user)
-  // .then(() => API.getAll("user"))
-
-
-
-
-
-
-
-
-
+  isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
   render() {
     return (
       <React.Fragment>
         <Route
           exact
-          path="/login"
-          render={props => {
-            return null;
-            }}/>
-        <Route
-          exact
-          path="/register"
-          render={props => {
-            return null
-          }}
-        />
-        <Route
-          exact
           path="/"
           render={props => {
-            return null;
+            if (this.isAuthenticated()) {
+              return <Messages />
+            } else {
+              return <Redirect to="/login" />
+            };
             //This will be Dashboard
           }}
         />
@@ -74,6 +56,9 @@ addUser = user =>
             // Remove null and return the component which will show list of friends
           }}
         />
+
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
       </React.Fragment>
     );
   }

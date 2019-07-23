@@ -2,8 +2,23 @@ import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import API from '../module/API'
 import Tasks from "./tasks/Tasks";
+import RegistrationForm from "./Login/Registration";
 
 export default class ApplicationViews extends Component {
+
+addUser = user =>
+  API.post("user", user)
+  // .then(() => API.getAll("user"))
+
+
+
+
+
+
+
+
+
+
   render() {
     return (
       <React.Fragment>
@@ -12,7 +27,12 @@ export default class ApplicationViews extends Component {
           path="/login"
           render={props => {
             return null;
-            //This will be Dashboard
+            }}/>
+        <Route
+          exact
+          path="/register"
+          render={props => {
+            return null
           }}
         />
         <Route

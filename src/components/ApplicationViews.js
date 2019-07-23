@@ -1,6 +1,7 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import API from '../module/API'
+import Tasks from "./tasks/Tasks";
 import RegistrationForm from "./Login/Registration";
 
 export default class ApplicationViews extends Component {
@@ -59,6 +60,9 @@ addUser = user =>
         <Route
           path="/tasks"
           render={props => {
+            //FIXME: Copied from Kennel...need more functionality than a delete
+            // return <Tasks editTask={this.editTask}
+            //               tasks={this.state.tasks} />
             return null;
           }}
         />

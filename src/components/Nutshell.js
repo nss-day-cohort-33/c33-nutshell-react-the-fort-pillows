@@ -4,13 +4,16 @@ import NavBar from "./nav/NavBar";
 import ApplicationViews from "./ApplicationViews";
 import "./Nutshell.css";
 import 'semantic-ui-css/semantic.min.css'
+import RegistrationForm from "./Login/Registration";
 
 class Nutshell extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar />
-        <ApplicationViews />
+      {/* <LoginForm /> */}
+      <RegistrationForm />
+        {/* <NavBar /> */}
+        {/* <ApplicationViews /> */}
       </React.Fragment>
     );
   }

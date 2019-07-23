@@ -2,6 +2,7 @@
 import React from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import logo from './logo.png'
+import { Link } from "react-router-dom"
 
 const LoginForm = () => (
   <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
@@ -11,7 +12,8 @@ const LoginForm = () => (
       </Header>
       <Form size='large'>
         <Segment stacked>
-          <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' />
+          <Form.Input fluid icon='user' iconPosition='left' placeholder='Username' />
+          <Form.Input fluid icon='envelope' iconPosition='left' placeholder='E-mail address' />
           <Form.Input
             fluid
             icon='lock'
@@ -26,7 +28,7 @@ const LoginForm = () => (
         </Segment>
       </Form>
       <Message>
-        New to us? <a href='#'>Sign Up</a>
+        New to us? <Link to={"/register"}>Register</Link>
       </Message>
     </Grid.Column>
   </Grid>

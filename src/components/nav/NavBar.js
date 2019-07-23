@@ -1,14 +1,18 @@
 import React, { Component } from "react";
 import { Button, Dropdown, Menu, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import './NavBar.css'
 
 export default class NavBar extends Component {
-  state = { activeItem: "home" };
+  state = { activeItem: "" };
+  //--Above not in use yet--//
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   render() {
     const { activeItem } = this.state;
+    //TODO: for currently selected item --//
+
 
     return (
       <Menu borderless size="huge">
@@ -26,8 +30,12 @@ export default class NavBar extends Component {
             <Dropdown.Item>
               <Link to="/events">Events</Link>
             </Dropdown.Item>
-              <Dropdown.Item><Link to="/tasks">Tasks</Link></Dropdown.Item>
-              <Dropdown.Item><Link to="/friends">Friends</Link></Dropdown.Item>
+            <Dropdown.Item>
+              <Link to="/tasks">Tasks</Link>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Link to="/friends">Friends</Link>
+            </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
 
@@ -45,6 +53,9 @@ export default class NavBar extends Component {
   }
 }
 
+
+
+//--Please Leave for now--//
 {
   /* <Menu.Item
   name='messages'
@@ -53,44 +64,3 @@ export default class NavBar extends Component {
 /> */
 }
 
-// import React, { Component } from "react";
-// import { Link } from "react-router-dom";
-// import "bootstrap/dist/css/bootstrap.min.css";
-
-// class NavBar extends Component {
-//   render() {
-//     return (
-//       <nav className="navbar navbar-light light-blue flex-md-nowrap p-0 shadow">
-//         <ul className="nav nav-pills nav-fill">
-//           <li className="nav-item">
-//             <Link className="nav-link" to="/">
-//               Dashboard
-//             </Link>
-//           </li>
-//           <li className="nav-item">
-//             <Link className="nav-link" to="/news">
-//               News
-//             </Link>
-//           </li>
-//           <li className="nav-item">
-//             <Link className="nav-link" to="/events">
-//               Events
-//             </Link>
-//           </li>
-//           <li className="nav-item">
-//             <Link className="nav-link" to="/tasks">
-//               Tasks
-//             </Link>
-//           </li>
-//           <li className="nav-item">
-//             <Link className="nav-link" to="/friends">
-//               Friends
-//             </Link>
-//           </li>
-//         </ul>
-//       </nav>
-//     );
-//   }
-// }
-
-// export default NavBar;

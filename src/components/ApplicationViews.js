@@ -9,6 +9,7 @@ export default class ApplicationViews extends Component {
 
   state = {
     events: [],
+    tasks: []
 }
 
   componentDidMount() {
@@ -16,6 +17,8 @@ export default class ApplicationViews extends Component {
 
     API.getAll("events")
         .then(events => newState.events = events)
+        .then(() => API.getAll("tasks"))
+        .then( tasks => newState.tasks = tasks)
         .then(() => this.setState(newState))
 }
 
@@ -58,11 +61,13 @@ export default class ApplicationViews extends Component {
         />
         <Route
           path="/tasks"
+//TODO:  Delete this later--FROM Here 2--Joy is using this to test the Tasks component
           render={props => {
-            //FIXME: Copied from Kennel...need more functionality than a delete
-            // return <Tasks editTask={this.editTask}
-            //               tasks={this.state.tasks} />
-            return null;
+            return (
+              <Tasks tasks={this.state.tasks}/>
+          );
+//TODO:  Delete this later--FROM Here 2--Joy is using this to test the Tasks component
+          // return null;
           }}
         />
 

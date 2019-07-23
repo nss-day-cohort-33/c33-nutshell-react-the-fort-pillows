@@ -10,7 +10,7 @@ export default class MenuExampleSizeLarge extends Component {
     const { activeItem } = this.state
 
     return (
-      <Menu size='large'>
+      <Menu inverted size='large'>
 
         <Menu.Item
           name='messages'

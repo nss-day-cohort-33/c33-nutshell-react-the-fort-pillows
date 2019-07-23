@@ -10,6 +10,7 @@ class Nutshell extends Component {
     return (
       <React.Fragment>
         <NavBar />
+        <LoginForm />
         <ApplicationViews />
       </React.Fragment>
     );

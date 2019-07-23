@@ -11,9 +11,9 @@ class Nutshell extends Component {
     return (
       <React.Fragment>
       {/* <LoginForm /> */}
-      <RegistrationForm />
-        {/* <NavBar /> */}
-        {/* <ApplicationViews /> */ }
+      {/* <RegistrationForm /> */}
+        <NavBar />
+        <ApplicationViews />
       </React.Fragment>
     );
   }

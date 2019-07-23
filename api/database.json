@@ -60,10 +60,19 @@
     "events": [
       {
         "userId": 1,
-        "name": "Going to get the nails did",
+        "name": "React JS Beginner Seminar",
         "date": "2019-07-30",
-        "location": "Nail Salon",
+        "description": "JS Seminar to teach developers the basics of React JS",
+        "location": "Nashville Public Library",
         "id": 1
+      },
+      {
+        "userId": 1,
+        "name": "Semantic-UI Seminar",
+        "date": "2019-07-31",
+        "description": "Learning the more advanced feature of Semantic-UI and 'themeing'",
+        "location": "Nashville Event Center",
+        "id": 2
       }
     ],
     "news": [

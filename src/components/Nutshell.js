@@ -13,7 +13,7 @@ class Nutshell extends Component {
       {/* <LoginForm /> */}
       <RegistrationForm />
         {/* <NavBar /> */}
-        {/* <ApplicationViews /> */}
+        {/* <ApplicationViews /> */ }
       </React.Fragment>
     );
   }

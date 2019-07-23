@@ -2,48 +2,69 @@ import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import API from '../module/API'
 import Tasks from "./tasks/Tasks";
+import Register from "./Login/Registration";
+import Login from "./Login/Login"
+import Messages from "./messages/Messages"
 import RegistrationForm from "./Login/Registration";
 import Events from "./events/Events";
 
 export default class ApplicationViews extends Component {
-
   state = {
+    messages: [],
+    tasks: [],
     events: [],
-    tasks: []
-}
+  }
 
   componentDidMount() {
-    const newState = {}
-
+    const newState = {} //An empty object to hold the data for each array in the state object
     API.getAll("events")
-        .then(events => newState.events = events)
-        .then(() => API.getAll("tasks"))
-        .then( tasks => newState.tasks = tasks)
-        .then(() => this.setState(newState))
-}
+      .then(events => newState.events = events)
+      .then(() => API.getAll("tasks"))
+      .then(tasks => newState.tasks = tasks)
+      .then(() => API.getAll("messages"))
+      .then(messages => newState.messages = messages)
+      .then(() => this.setState(newState))
+  }
+
+  //TODO:  Delete this later--TO Here 1--Joy is using this to test the Tasks component
+
+  addMessage = (data) => {
+    API.post("messages", data)
+      .then(() => API.getAll("messages", "_expand=user"))
+      .then(messages =>
+        this.setState({
+          messages: messages
+        })
+      )
+  }
+
+  isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
   render() {
     return (
       <React.Fragment>
         <Route
           exact
+          path="/"
+          render={(props) => {
+            if (this.isAuthenticated()) {
+              return <Messages messages={this.state.messages} addMessage={this.addMessage} />
+            } else {
+              return <Redirect to="/login" />
+            };
+            //This will be Dashboard
+          }} />
+        <Route
+          exact
           path="/login"
           render={props => {
             return null;
-            }}/>
+          }} />
         <Route
           exact
           path="/register"
           render={props => {
             return null
-          }}
-        />
-        <Route
-          exact
-          path="/"
-          render={props => {
-            return null;
-            //This will be Dashboard
           }}
         />
         <Route
@@ -61,13 +82,13 @@ export default class ApplicationViews extends Component {
         />
         <Route
           path="/tasks"
-//TODO:  Delete this later--FROM Here 2--Joy is using this to test the Tasks component
+          //TODO:  Delete this later--FROM Here 2--Joy is using this to test the Tasks component
           render={props => {
             return (
-              <Tasks tasks={this.state.tasks}/>
-          );
-//TODO:  Delete this later--FROM Here 2--Joy is using this to test the Tasks component
-          // return null;
+              <Tasks tasks={this.state.tasks} />
+            );
+            //TODO:  Delete this later--FROM Here 2--Joy is using this to test the Tasks component
+            // return null;
           }}
         />
 
@@ -78,7 +99,11 @@ export default class ApplicationViews extends Component {
             // Remove null and return the component which will show list of friends
           }}
         />
+
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
       </React.Fragment>
     );
   }
 }
+

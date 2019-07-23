@@ -20,7 +20,7 @@ export default class NavBar extends Component {
           Nutshell
         </Menu.Item>
         <Dropdown item icon="sidebar">
-          <Dropdown.Menu inverted>
+          <Dropdown.Menu>
             <Dropdown.Item>
               <Link to="/">Dashboard</Link>
             </Dropdown.Item>

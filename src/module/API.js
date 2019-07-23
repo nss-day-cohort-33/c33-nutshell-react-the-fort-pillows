@@ -4,8 +4,14 @@ export default {
   get(database, id) {
     return fetch(`${remoteURL}/${database}/${id}`).then(data => data.json())
   },
-  getAll(database) {
-    return fetch(`${remoteURL}/${database}`).then(data => data.json())
+  getAll(database, queryParams) {
+    // return fetch(`${remoteURL}/${database}`)
+    let url = `http://localhost:8088/${database}`
+    if (queryParams) {
+      url += `?${queryParams}`
+    }
+    return fetch(url)
+    .then( data => data.json() )
   },
   delete (database, id) {
     return fetch(`${remoteURL}/${database}/${id}`, {

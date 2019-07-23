@@ -3,29 +3,24 @@ import React, { Component } from "react";
 import API from '../module/API'
 import Tasks from "./tasks/Tasks";
 import RegistrationForm from "./Login/Registration";
+import Events from "./events/Events";
 
 export default class ApplicationViews extends Component {
 
-//TODO:  Delete this later--FROM Here 1--Joy is using this to test the Tasks component
   state = {
+    events: [],
     tasks: []
-  }
-      componentDidMount() {
-        const newState = {} //An empty object to hold the data for each array in the state object
-        API.getAll("tasks")
-            .then( tasks => newState.tasks = tasks)
-            .then(() => this.setState(newState))  //After the Task resource is brought back this sets the state and causes the re-rendering!
-    }
-//TODO:  Delete this later--TO Here 1--Joy is using this to test the Tasks component
+}
 
+  componentDidMount() {
+    const newState = {}
 
-
-
-
-
-
-
-
+    API.getAll("events")
+        .then(events => newState.events = events)
+        .then(() => API.getAll("tasks"))
+        .then( tasks => newState.tasks = tasks)
+        .then(() => this.setState(newState))
+}
 
   render() {
     return (
@@ -61,8 +56,7 @@ export default class ApplicationViews extends Component {
         <Route
           path="/events"
           render={props => {
-            return null;
-            // Remove null and return the component which will show the messages
+            return <Events events={this.state.events} />;
           }}
         />
         <Route

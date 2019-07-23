@@ -7,6 +7,32 @@ import Login from "./Login/Login"
 import Messages from "./messages/Messages"
 
 export default class ApplicationViews extends Component {
+  state = {
+    user:[],
+    messages: [],
+  }
+
+  componentDidMount() {
+    const newState = {}
+
+    API.getAll("messages")
+      .then(messages => newState.messages = messages)
+      .then(() => this.setState(newState))
+
+
+  }
+
+  addMessage = (data) => {
+    API.post("messages", data)
+      .then(() => API.getAll("messages", "_expand=user"))
+      .then(messages =>
+        this.setState({
+          messages: messages
+        })
+      )
+  }
+
+
 
   isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
@@ -16,9 +42,9 @@ export default class ApplicationViews extends Component {
         <Route
           exact
           path="/"
-          render={props => {
+          render={(props) => {
             if (this.isAuthenticated()) {
-              return <Messages />
+              return <Messages messages={this.state.messages} addMessage={this.addMessage} />
             } else {
               return <Redirect to="/login" />
             };
@@ -63,3 +89,4 @@ export default class ApplicationViews extends Component {
     );
   }
 }
+

@@ -21,7 +21,7 @@ class RegistrationForm extends Component {
     }
     //this will need to be moved to applicationviews and passed down as a child
     addUser = user =>
-    API.post("user", user)
+    API.post("users", user)
 
     //this generates the new user and pushes to the database
     //FIXME: NEED TO ADD CODE FOR VERIFICATION

@@ -1,113 +1,79 @@
 {
-  "users": [
-    {
-      "username": "dummy",
-      "email": "dummy@aol.com",
-      "password": "dummy",
-      "id": 1
-    },
-    {
-      "username": "smarty",
-      "email": "smarty@gmail.com",
-      "password": "smarty",
-      "id": 2
-    }
-  ],
-  "friends": [
-    {
-      "userId": 1,
-      "friendId": 2,
-      "id": 1
-    }
-  ],
-  "messages": [
-    {
-      "userId": 1,
-      "message": "this is the best social media app ever!!!",
-      "id": 1
-    },
-    {
-      "userId": "",
-      "message": "",
-      "id": 2
-    },
-    {
-      "userId": "",
-      "message": "",
-      "id": 3
-    },
-    {
-      "userId": "",
-      "message": "",
-      "id": 4
-    },
-    {
-      "userId": "",
-      "message": "",
-      "id": 5
-    },
-    {
-      "userId": "",
-      "message": "",
-      "id": 6
-    },
-    {
-      "userId": "",
-      "message": "",
-      "id": 7
-    },
-    {
-      "userId": "",
-      "message": "",
-      "id": 8
-    },
-    {
-      "userId": "",
-      "message": "",
-      "id": 9
-    },
-    {
-      "userId": "",
-      "message": "",
-      "id": 10
-    },
-    {
-      "userId": "",
-      "message": "",
-      "id": 11
-    },
-    {
-      "userId": "",
-      "message": "a",
-      "id": 12
-    }
-  ],
-  "tasks": [
-    {
-      "userId": 1,
-      "task": "Did I just do this?",
-      "date": "2019-01-01",
-      "complete": false,
-      "id": 1
-    }
-  ],
-  "events": [
-    {
-      "userId": 1,
-      "name": "Going to get the nails did",
-      "date": "2019-07-30",
-      "location": "Nail Salon",
-      "id": 1
-    }
-  ],
-  "news": [
-    {
-      "userId": 1,
-      "url": "https://www.newser.com/story/269443/turns-out-a-cop-station-is-a-bad-place-to-steal-a-bike.html",
-      "title": "Alleged Theft at Cop Station Goes as Well as You'd Expect",
-      "synopsis": "Would-be bike thief caught within seconds: police",
-      "time": 1562693385246,
-      "id": 1
-    }
-  ]
-}
+    "users": [
+      {
+        "username": "dummy",
+        "email": "dummy@aol.com",
+        "password": "dummy",
+        "id": 1
+      },
+      {
+        "username": "smarty",
+        "email": "smarty@gmail.com",
+        "password": "smarty",
+        "id": 2
+      }
+    ],
+    "friends": [
+      {
+        "userId": 1,
+        "friendId": 2,
+        "id": 1
+      }
+    ],
+    "messages": [
+      {
+        "userId": 1,
+        "message": "this is the best social media app ever!!!",
+        "id": 1
+      }
+    ],
+    "tasks": [
+      {
+        "userId": 1,
+        "task": "1st Task Item",
+        "date": "2019-01-01",
+        "complete": false,
+        "id": 1
+      },
+      {
+        "userId": 2,
+        "task": "2nd Task Item",
+        "date": "2019-02-01",
+        "complete": false,
+        "id": 2
+      },
+      {
+        "userId": 1,
+        "task": "3rd Task Item",
+        "date": "2019-03-01",
+        "complete": true,
+        "id": 3
+      },
+      {
+        "userId": 3,
+        "task": "4th Task Item",
+        "date": "2019-03-01",
+        "complete": false,
+        "id": 4
+      }
+    ],
+    "events": [
+      {
+        "userId": 1,
+        "name": "Going to get the nails did",
+        "date": "2019-07-30",
+        "location": "Nail Salon",
+        "id": 1
+      }
+    ],
+    "news": [
+      {
+        "userId": 1,
+        "url": "https://www.newser.com/story/269443/turns-out-a-cop-station-is-a-bad-place-to-steal-a-bike.html",
+        "title": "Alleged Theft at Cop Station Goes as Well as You'd Expect",
+        "synopsis": "Would-be bike thief caught within seconds: police",
+        "time": 1562693385246,
+        "id": 1
+      }
+    ]
+  }

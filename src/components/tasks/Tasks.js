@@ -18,32 +18,80 @@
 // And when the enter key is pressed, the new task name should be saved to the database
 // And the task list should be updated to display the new task name
 
+//FIXME:  Commenting the code below to start the testing phase to see the tasks in the DOM initially.
+// import React, { Component } from 'react'
+// import taskpic from "./taskpic.png"
+// import "./tasks.css"
+
+//FIXME:  Commenting the code below to start the testing phase to see the tasks in the DOM initially.
+// export default class Tasks extends Component {
+//     render () {
+//         return (
+//             <section className="tasks">
+//             {
+//                 this.props.tasks.map(task =>
+//                     <div key={task.id} className="card">
+//                         <div className="card-body">
+//                             <div className="card-title">
+//                                 {/* Get the task picture, attach the task's name and a button whose onclick property edits that specific task*/}
+//                                 <img src={taskpic} className="taskpic" alt=""/>
+//                                 <h5>{task.name}</h5>
+//                                 <button
+//                                     onClick={() => this.props.editTask(task.id)}
+//                                     className="card-link">Edit</button>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 )
+//             }
+//             </section>
+//         )
+//     }
+// }
+
 
 import React, { Component } from 'react'
-import taskpic from "./taskpic.png"
-import "./tasks.css"
 
 export default class Tasks extends Component {
-    render () {
-        return (
-            <section className="tasks">
-            {
-                this.props.tasks.map(task =>
-                    <div key={task.id} className="card">
-                        <div className="card-body">
-                            <div className="card-title">
-                                {/* Get the task picture, attach the task's name and a button whose onclick property edits that specific task*/}
-                                <img src={taskpic} className="taskpic" alt=""/>
-                                <h5>{task.name}</h5>
-                                <button
-                                    onClick={() => this.props.editTask(task.id)}
-                                    className="card-link">Edit</button>
-                            </div>
-                        </div>
-                    </div>
-                )
-            }
+
+  render() {
+    return (
+      <div>
+          <h3>Sending Task data to DOM</h3>
+          {
+          this.props.tasks.map(task =>
+            <section key={task.id}>
+              <h4>{task.task}</h4>
             </section>
-        )
-    }
+          )
+          }
+      </div>
+    )
+  }
 }
+
+//TODO: Delete later
+//     render() {
+//         return (
+//             <React.Fragment>
+//                 <Route exact path="/" render={(props) => { //The path is / and represents the default location--requires the <exact path> descriptor!
+//                     return <LocationList locations={this.state.locations} />// State is being passed to locations
+//                 }} />
+//                <Route exact path="/animals" render={() => {
+//                 // The deleteAnimal function is being passed to the AnimalList component.
+//                     return <AnimalList deleteAnimal={this.deleteAnimal}
+//                                         animals={this.state.animals} />
+//                 }} />
+//                 <Route path="/employees" render={(props) => {
+//                 // The deleteEmployee function is being passed to the EmployeeList component.
+//                     return <EmployeeList deleteEmployee={this.deleteEmployee}
+//                                         employees={this.state.employees} />
+//                 }} />
+//                 <Route path="/owners" render={(props) => {
+//                 // The deleteOwners function is being passed to the OwnerList component.
+//                     return <OwnerList   deleteOwner={this.deleteOwner}
+//                                         owners={this.state.owners} />
+//                 }} />
+//             </React.Fragment>
+//         )
+//     }

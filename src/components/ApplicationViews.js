@@ -3,21 +3,21 @@ import React, { Component } from "react";
 import API from '../module/API'
 import Tasks from "./tasks/Tasks";
 import RegistrationForm from "./Login/Registration";
+import Events from "./events/Events";
 
 export default class ApplicationViews extends Component {
 
-addUser = user =>
-  API.post("user", user)
-  // .then(() => API.getAll("user"))
+  state = {
+    events: [],
+}
 
+  componentDidMount() {
+    const newState = {}
 
-
-
-
-
-
-
-
+    API.getAll("events")
+        .then(events => newState.events = events)
+        .then(() => this.setState(newState))
+}
 
   render() {
     return (
@@ -53,8 +53,7 @@ addUser = user =>
         <Route
           path="/events"
           render={props => {
-            return null;
-            // Remove null and return the component which will show the messages
+            return <Events events={this.state.events} />;
           }}
         />
         <Route

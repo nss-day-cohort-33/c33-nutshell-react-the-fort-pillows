@@ -30,10 +30,31 @@
     "tasks": [
       {
         "userId": 1,
-        "task": "Did I just do this?",
+        "task": "1st Task Item",
         "date": "2019-01-01",
         "complete": false,
         "id": 1
+      },
+      {
+        "userId": 2,
+        "task": "2nd Task Item",
+        "date": "2019-02-01",
+        "complete": false,
+        "id": 2
+      },
+      {
+        "userId": 1,
+        "task": "3rd Task Item",
+        "date": "2019-03-01",
+        "complete": true,
+        "id": 3
+      },
+      {
+        "userId": 3,
+        "task": "4th Task Item",
+        "date": "2019-03-01",
+        "complete": false,
+        "id": 4
       }
     ],
     "events": [

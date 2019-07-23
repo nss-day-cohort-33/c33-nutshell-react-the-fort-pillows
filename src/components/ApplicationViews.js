@@ -6,9 +6,17 @@ import RegistrationForm from "./Login/Registration";
 
 export default class ApplicationViews extends Component {
 
-addUser = user =>
-  API.post("user", user)
-  // .then(() => API.getAll("user"))
+//TODO:  Delete this later--FROM Here 1--Joy is using this to test the Tasks component
+  state = {
+    tasks: []
+  }
+      componentDidMount() {
+        const newState = {} //An empty object to hold the data for each array in the state object
+        API.getAll("tasks")
+            .then( tasks => newState.tasks = tasks)
+            .then(() => this.setState(newState))  //After the Task resource is brought back this sets the state and causes the re-rendering!
+    }
+//TODO:  Delete this later--TO Here 1--Joy is using this to test the Tasks component
 
 
 
@@ -59,11 +67,13 @@ addUser = user =>
         />
         <Route
           path="/tasks"
+//TODO:  Delete this later--FROM Here 2--Joy is using this to test the Tasks component
           render={props => {
-            //FIXME: Copied from Kennel...need more functionality than a delete
-            // return <Tasks editTask={this.editTask}
-            //               tasks={this.state.tasks} />
-            return null;
+            return (
+              <Tasks tasks={this.state.tasks}/>
+          );
+//TODO:  Delete this later--FROM Here 2--Joy is using this to test the Tasks component
+          // return null;
           }}
         />
 

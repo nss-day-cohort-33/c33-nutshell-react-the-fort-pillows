@@ -52,7 +52,7 @@ toggle = () => {
             </Button>
           }
           //-sets state of Modal to current state--//
-          open={this.state.modalOpen}
+          // open={this.state.modalOpen}
         >
           <Modal.Header>Add Your Event</Modal.Header>
           <Modal.Content>

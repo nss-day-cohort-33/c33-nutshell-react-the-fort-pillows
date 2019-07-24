@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Form, Modal, Icon } from "semantic-ui-react";
+import {Redirect} from "react-router-dom" 
 
 const buttonMargin = {
   margin: "2em"
@@ -10,8 +11,14 @@ export default class EventForm extends Component {
     eventName: "",
     date: "",
     description: "",
-    location: ""
+    location: "",
+    modalOpen: false 
+    //-- This is et to false to keep the modal closed when the user visits the page --//
   };
+
+toggle = () => {
+  this.setState({modalOpen: !this.state.modalOpen})
+}
 
   handleFieldChange = evt => {
     const stateToChange = {};
@@ -27,19 +34,25 @@ export default class EventForm extends Component {
       description: this.state.description,
       location: this.state.location
     };
-    this.props.addEvent(event).then(() => this.props.history.push("/events"));
+    this.props.addEvent(event);
+    this.toggle()
+    //--This toggle will close the Modal upon click --//
   };
 
   render() {
     return (
       <div>
         <Modal
+        
           trigger={
-            <Button primary icon labelPosition="left" style={buttonMargin}>
+            //-- Put toggle in trigger to make Modal appear on click --//
+            <Button primary icon labelPosition="left" style={buttonMargin} onClick={this.toggle}>
               <Icon name="add" />
               Add Event
             </Button>
           }
+          //-sets state of Modal to current state--//
+          open={this.state.modalOpen}
         >
           <Modal.Header>Add Your Event</Modal.Header>
           <Modal.Content>
@@ -81,7 +94,7 @@ export default class EventForm extends Component {
                 />
               </Form.Field>
               <Button type="submit" onClick={this.constructNewEvent}>
-                Submit
+              <Redirect to="/events" />Submit
               </Button>
             </Form>
           </Modal.Content>

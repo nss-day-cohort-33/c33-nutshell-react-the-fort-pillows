@@ -1,13 +1,28 @@
 import React, { Component } from "react";
 import { Button, Dropdown, Menu, Icon } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import './NavBar.css'
 
 export default class NavBar extends Component {
-  state = { activeItem: "" };
+  state = { activeItem: "",
+            redirect: false};
   //--Above not in use yet--//
 
+  setRedirect = () => {
+    this.setState({
+      redirect:true
+    })
+  }
+
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      console.log("renderRedirect calls")
+      return <Redirect to='/login'/>
+    }
+    sessionStorage.clear()
+  }
 
   render() {
     const { activeItem } = this.state;
@@ -34,7 +49,7 @@ export default class NavBar extends Component {
               <Link to="/tasks">Tasks</Link>
             </Dropdown.Item>
             <Dropdown.Item>
-              <Link to="/friends">Friends</Link>
+                <Link to="/friends">Friends</Link>
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
@@ -45,7 +60,7 @@ export default class NavBar extends Component {
               <Icon name="user" />
               Username
             </Menu.Item>
-            <Button primary>Logout</Button>
+            <Button primary onClick={this.setRedirect}>Logout</Button>
           </Menu.Item>
         </Menu.Menu>
       </Menu>

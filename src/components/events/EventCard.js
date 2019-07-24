@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Card, Icon, Confirm, Button } from "semantic-ui-react";
+import EventEditForm from "./EventEditForm"
 
 const cardSize = {
   width: "25em"
@@ -29,7 +30,8 @@ export default class EventCard extends Component {
             <br />
             <Card.Content>
               <div>
-                <Button icon="pencil" />
+                <Button icon="pencil" on cli/>
+                {/* For Confirmation Box */}
                 <Button icon="trash alternate" onClick={this.open} />
                 <Confirm
                   open={this.state.open}

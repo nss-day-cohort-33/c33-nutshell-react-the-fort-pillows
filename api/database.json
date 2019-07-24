@@ -25,6 +25,11 @@
       "userId": 1,
       "message": "this is the best social media app ever!!!",
       "id": 1
+    },
+    {
+      "userId": 2,
+      "message": "hey dummy!  ",
+      "id": 2
     }
   ],
   "tasks": [
@@ -73,6 +78,20 @@
       "description": "Learning the more advanced feature of Semantic-UI and 'themeing'",
       "location": "Nashville Event Center",
       "id": 2
+    },
+    {
+      "name": "Taco",
+      "date": "2019-07-26",
+      "description": "BOOOO",
+      "location": "Here",
+      "id": 3
+    },
+    {
+      "name": "",
+      "date": "",
+      "description": "",
+      "location": "",
+      "id": 4
     }
   ],
   "news": [

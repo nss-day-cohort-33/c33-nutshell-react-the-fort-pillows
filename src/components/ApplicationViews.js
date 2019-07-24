@@ -44,7 +44,25 @@ export default class ApplicationViews extends Component {
       events: events
     }))
   }
-
+//delete functions
+  deleteMessage = (database, id) => {
+    API.delete(database, id)
+    .then(messages =>
+      this.setState({
+        messages:messages
+      }))
+  }
+//update functions
+    updateMessage = (editMessage) => {
+      return API.put("messages", editMessage)
+      .then (() => API.getAll("messages", "_expand=user"))
+      .then( messages => {
+        this.setState({
+          messages: messages
+        })
+      })
+    }
+//this confirm authentication
   isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
   render() {
@@ -55,7 +73,7 @@ export default class ApplicationViews extends Component {
           path="/"
           render={(props) => {
             if (this.isAuthenticated()) {
-              return <Messages messages={this.state.messages} addMessage={this.addMessage} />
+              return <Messages messages={this.state.messages} addMessage={this.addMessage} deleteMessage={this.deleteMessage}/>
             } else {
               return <Redirect to="/login" />
             };

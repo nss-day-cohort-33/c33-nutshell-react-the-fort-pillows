@@ -14,7 +14,7 @@ export default class Events extends Component {
         </div>
         <div className="card-container">
             {this.props.events.map(event => (
-              <EventCard key={event.id} event={event} {...this.props} />
+              <EventCard key={event.id} event={event} deleteEvent={this.props.deleteEvent} {...this.props} />
             ))}
         </div>
       </React.Fragment>

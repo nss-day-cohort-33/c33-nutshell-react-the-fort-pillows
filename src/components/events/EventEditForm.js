@@ -5,7 +5,7 @@ const buttonMargin = {
   margin: "2em"
 };
 
-export default class EventForm extends Component {
+export default class EventEditForm extends Component {
   state = {
     eventName: "",
     date: "",

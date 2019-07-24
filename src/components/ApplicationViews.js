@@ -37,6 +37,13 @@ export default class ApplicationViews extends Component {
         })
       )
   }
+  addEvent = (data) => {
+    API.post("events", data)
+    .then(() => API.getAll("events"))
+    .then(events => this.setState({
+      events: events
+    }))
+  }
 
   isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
@@ -77,7 +84,7 @@ export default class ApplicationViews extends Component {
         <Route
           path="/events"
           render={props => {
-            return <Events events={this.state.events} />;
+            return <Events {...props} events={this.state.events} addEvent={this.addEvent} />;
           }}
         />
         <Route

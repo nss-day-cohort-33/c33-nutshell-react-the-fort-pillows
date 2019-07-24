@@ -1,0 +1,19 @@
+.events-header{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.card-margin {
+    margin: 20px;
+}
+
+.large-text {
+    font-size: 1.25rem;
+ }

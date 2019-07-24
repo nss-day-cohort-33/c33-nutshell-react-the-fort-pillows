@@ -32,8 +32,7 @@ export default class ApplicationViews extends Component {
       .then(messages =>
         this.setState({
           messages: messages
-        })
-        )
+        }))
   }
   addEvent = (data) => {
     API.post("events", data)
@@ -71,7 +70,10 @@ export default class ApplicationViews extends Component {
           path="/"
           render={(props) => {
             if (this.isAuthenticated()) {
-              return <Messages messages={this.state.messages} addMessage={this.addMessage} deleteMessage={this.deleteMessage}/>
+              return <Messages messages={this.state.messages}
+              addMessage={this.addMessage}
+              deleteMessage={this.deleteMessage}
+              updateMessage={this.updateMessage}/>
             } else {
               return <Redirect to="/login" />
             };

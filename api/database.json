@@ -13,23 +13,22 @@
       "id": 2
     }
   ],
-  "friends": [
-    {
-      "userId": 1,
-      "friendId": 2,
-      "id": 1
-    }
-  ],
+  "friends": [],
   "messages": [
     {
-      "userId": 1,
+      "userId": 2,
       "message": "this is the best social media app ever!!!",
       "id": 1
     },
     {
       "userId": 2,
-      "message": "hey dummy!  ",
+      "message": "hey dummy!",
       "id": 2
+    },
+    {
+      "userId": 2,
+      "message": "hey",
+      "id": 3
     }
   ],
   "tasks": [
@@ -53,13 +52,6 @@
       "date": "2019-03-01",
       "complete": true,
       "id": 3
-    },
-    {
-      "userId": 3,
-      "task": "4th Task Item",
-      "date": "2019-03-01",
-      "complete": false,
-      "id": 4
     }
   ],
   "events": [
@@ -92,6 +84,20 @@
       "description": "",
       "location": "",
       "id": 4
+    },
+    {
+      "name": "stuff",
+      "date": "2019-12-31",
+      "description": "stuff",
+      "location": "stuff",
+      "id": 5
+    },
+    {
+      "name": "",
+      "date": "",
+      "description": "",
+      "location": "",
+      "id": 6
     }
   ],
   "news": [

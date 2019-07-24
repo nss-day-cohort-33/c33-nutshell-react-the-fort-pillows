@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
-import { Feed, Input, Message, FeedSummary, Button, Icon } from 'semantic-ui-react'
+import { Feed, Input, Message, FeedSummary, Button, Icon, Dropdown, Confirm } from 'semantic-ui-react'
 
 export default class Messages extends Component {
     state = {
-        userId: "",
-        message: ""
+        userId: 2,
+        message: "",
     }
 
+    open = () => this.setState({ open: true })
+    close = () => this.setState({ open: false })
 
     FeedExampleEventsProp = (events) => <Feed events={events} />
 
@@ -16,33 +18,24 @@ export default class Messages extends Component {
         this.setState(stateToChange)
     }
     //TODO: how is userId passed in?
-    handleKeyPress = evt => {
-        evt.preventDefault()
-        if (evt.key === "Enter") {
-            console.log("you pressed enter")
-            const message = {
-                userId: this.state.userId,
-                message: this.state.message
-            }
-            console.log("state change", message)
-            this.props.addMessage(message)
-            // .then(() => this.props.history.push("/"))
-        }
-    }
-    //TODO: how is userId passed in?
     handleClick = evt => {
-        evt.preventDefault()
         console.log("you clicked")
+        evt.preventDefault();
         const message = {
             userId: this.state.userId,
             message: this.state.message
-        }
-        console.log("state change", message)
+        };
         this.props.addMessage(message)
-        // .then(() => this.props.history.push("/"))
     }
 
+    state = {
+        hidden: false,
+    }
 
+    handleEditClick = (id) => {
+        // preventDefault();
+        this.setState({hidden:!this.state.hidden})
+    }
 
     // this.FeedExampleEventsProp(this.props.messages)
     render() {
@@ -50,35 +43,43 @@ export default class Messages extends Component {
             <React.Fragment>
 
                 <div className="ui padded grid">
-                    <Message >
+                    <Message floating>
                         <Feed>
                             <FeedSummary>
                                 {
                                     this.props.messages.map(message =>
                                         <div key={message.id}>
-                                            {message.user.username}: {message.message}
+                                            <input type="text" hidden={!this.state.hidden}></input>
+                                            <div hidden={this.state.hidden}> {message.user.username}: {message.message}
+                                                <Dropdown icon="list" direction="right">
+                                                    <Dropdown.Menu position="right">
+                                                        <Dropdown.Item icon="pencil" description="Edit" onClick={this.handleEditClick} />
+                                                        <Dropdown.Item icon="trash alternate" description="Delete"
+                                                            onClick={this.open} />
+                                                        <Confirm open={this.state.open} onCancel={this.close} onConfirm={() => this.props.deleteMessage("messages", message.id)} />
+                                                    </Dropdown.Menu>
+                                                </Dropdown>
+                                            </div>
                                         </div>
                                     )
                                 }
                             </FeedSummary>
                         </Feed>
                         <div>
-                            <form>
-                                <Input
-                                    id="message"
-                                    type="text"
-                                    autoFocus
-                                    placeholder="Got something to say?"
-                                    onKeyDown={this.handleKeyPress}
-                                    onChange={this.handleFieldChange}>
-                                </Input>
-                                <Button
-                                    icon
-                                    onClick={this.handleclick}
-                                >
-                                    <Icon name="chat"></Icon>
-                                </Button>
-                            </form>
+                            <Input
+                                id="message"
+                                type="text"
+                                autoFocus
+                                placeholder="Got something to say?"
+                                onChange={this.handleFieldChange}
+                            >
+                            </Input>
+                            <Button
+                                icon
+                                type="submit"
+                                onClick={this.handleClick}>
+                                <Icon name="chat"></Icon>
+                            </Button>
 
                         </div>
                     </Message>

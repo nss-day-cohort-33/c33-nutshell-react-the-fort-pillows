@@ -43,6 +43,14 @@ export default class ApplicationViews extends Component {
     }))
   }
 
+  deleteEvent = (database, id) => {
+    API.delete(database, id)
+    .then(events =>
+      this.setState({
+        events:events
+      }))
+  }
+
   isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
   render() {
@@ -82,7 +90,7 @@ export default class ApplicationViews extends Component {
         <Route
           path="/events"
           render={props => {
-            return <Events {...props} events={this.state.events} addEvent={this.addEvent} />;
+            return <Events {...props} events={this.state.events} deleteEvent={this.deleteEvent} addEvent={this.addEvent} />;
           }}
         />
         <Route

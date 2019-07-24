@@ -13,13 +13,7 @@
       "id": 2
     }
   ],
-  "friends": [
-    {
-      "userId": 1,
-      "friendId": 2,
-      "id": 1
-    }
-  ],
+  "friends": [],
   "messages": [
     {
       "userId": 1,
@@ -48,13 +42,6 @@
       "date": "2019-03-01",
       "complete": true,
       "id": 3
-    },
-    {
-      "userId": 3,
-      "task": "4th Task Item",
-      "date": "2019-03-01",
-      "complete": false,
-      "id": 4
     }
   ],
   "events": [

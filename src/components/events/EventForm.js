@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Button, Form, Modal, Icon } from "semantic-ui-react";
-import {Redirect} from "react-router-dom" 
 
 const buttonMargin = {
   margin: "2em"
@@ -12,7 +11,7 @@ export default class EventForm extends Component {
     date: "",
     description: "",
     location: "",
-    modalOpen: false 
+    open: false 
     //-- This is et to false to keep the modal closed when the user visits the page --//
   };
 
@@ -52,8 +51,9 @@ toggle = () => {
             </Button>
           }
           //-sets state of Modal to current state--//
-          // open={this.state.modalOpen}
+          open={this.state.modalOpen}
         >
+          <div className="closeButton"><Modal.Header><Button icon="window close" onClick={this.toggle} /></Modal.Header></div>
           <Modal.Header>Add Your Event</Modal.Header>
           <Modal.Content>
             <Form>
@@ -94,7 +94,7 @@ toggle = () => {
                 />
               </Form.Field>
               <Button type="submit" onClick={this.constructNewEvent}>
-              <Redirect to="/events" />Submit
+                Submit
               </Button>
             </Form>
           </Modal.Content>

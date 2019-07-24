@@ -51,7 +51,7 @@ export default class ApplicationViews extends Component {
       }))
   }
 
-  isAuthenticated = () => sessionStorage.getItem("credentials") !== null
+  isAuthenticated = () => sessionStorage.getItem("id") !== null
 
   render() {
     return (
@@ -113,7 +113,14 @@ export default class ApplicationViews extends Component {
           }}
         />
 
-        <Route path="/login" component={Login} />
+          <Route path="/login"
+          render={props => {
+            return (
+              <Login {...props} />
+            );
+          }}
+        />
+
         <Route path="/register" component={Register} />
       </React.Fragment>
     );

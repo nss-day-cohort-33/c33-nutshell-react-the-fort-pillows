@@ -18,6 +18,7 @@ export default class NavBar extends Component {
 
   renderRedirect = () => {
     if (this.state.redirect) {
+      console.log("renderRedirect calls")
       return <Redirect to='/login'/>
     }
     sessionStorage.clear()
@@ -48,7 +49,7 @@ export default class NavBar extends Component {
               <Link to="/tasks">Tasks</Link>
             </Dropdown.Item>
             <Dropdown.Item>
-              <Link to="/friends">Friends</Link>
+                <Link to="/friends">Friends</Link>
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
@@ -59,7 +60,6 @@ export default class NavBar extends Component {
               <Icon name="user" />
               Username
             </Menu.Item>
-            {this.renderRedirect()}
             <Button primary onClick={this.setRedirect}>Logout</Button>
           </Menu.Item>
         </Menu.Menu>

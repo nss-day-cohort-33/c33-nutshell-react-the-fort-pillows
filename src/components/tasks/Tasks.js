@@ -51,47 +51,24 @@
 
 
 import React, { Component } from 'react'
+import { Button } from "semantic-ui-react"
 
 export default class Tasks extends Component {
 
+handleclick = () => {
+  console.log("I was clicked.")
+}
   render() {
     return (
       <div>
           <h3>Sending Task data to DOM</h3>
-          {
-          this.props.tasks.map(task =>
+          {this.props.tasks.map(task =>
             <section key={task.id}>
               <h4>{task.task}</h4>
             </section>
-          )
-          }
+          )}
+          <Button onClick={this.handleclick}>Add New Task</Button>
       </div>
     )
   }
 }
-
-//TODO: Delete later
-//     render() {
-//         return (
-//             <React.Fragment>
-//                 <Route exact path="/" render={(props) => { //The path is / and represents the default location--requires the <exact path> descriptor!
-//                     return <LocationList locations={this.state.locations} />// State is being passed to locations
-//                 }} />
-//                <Route exact path="/animals" render={() => {
-//                 // The deleteAnimal function is being passed to the AnimalList component.
-//                     return <AnimalList deleteAnimal={this.deleteAnimal}
-//                                         animals={this.state.animals} />
-//                 }} />
-//                 <Route path="/employees" render={(props) => {
-//                 // The deleteEmployee function is being passed to the EmployeeList component.
-//                     return <EmployeeList deleteEmployee={this.deleteEmployee}
-//                                         employees={this.state.employees} />
-//                 }} />
-//                 <Route path="/owners" render={(props) => {
-//                 // The deleteOwners function is being passed to the OwnerList component.
-//                     return <OwnerList   deleteOwner={this.deleteOwner}
-//                                         owners={this.state.owners} />
-//                 }} />
-//             </React.Fragment>
-//         )
-//     }

@@ -26,8 +26,6 @@ export default class ApplicationViews extends Component {
       .then(() => this.setState(newState))
   }
 
-  //TODO:  Delete this later--TO Here 1--Joy is using this to test the Tasks component
-
   addMessage = (data) => {
     API.post("messages", data)
       .then(() => API.getAll("messages", "_expand=user"))

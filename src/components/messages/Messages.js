@@ -47,6 +47,7 @@ export default class Messages extends Component {
 render() {
     return (
         <React.Fragment>
+
             <div className="ui padded grid">
                 <Message >
                     <Feed>
@@ -54,7 +55,8 @@ render() {
                             {
                                 this.props.messages.map(message =>
                                     <div key={message.id}>
-                                        {message.message}
+                                        {message.user.username}: {message.message}
+                                    {console.log("messages:", message   )}
                                     </div>
                                 )
                             }

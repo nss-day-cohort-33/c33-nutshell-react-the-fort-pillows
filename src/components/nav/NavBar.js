@@ -9,6 +9,8 @@ export default class NavBar extends Component {
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
+handleLogOut = () => sessionStorage.clear()
+
   render() {
     const { activeItem } = this.state;
     //TODO: for currently selected item --//
@@ -45,7 +47,7 @@ export default class NavBar extends Component {
               <Icon name="user" />
               Username
             </Menu.Item>
-            <Button primary>Logout</Button>
+            <Button primary onClick={this.handleLogOut}>Logout</Button>
           </Menu.Item>
         </Menu.Menu>
       </Menu>

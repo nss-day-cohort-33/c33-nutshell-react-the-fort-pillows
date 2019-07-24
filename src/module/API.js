@@ -6,7 +6,7 @@ export default {
   },
   getAll(database, queryParams) {
     // return fetch(`${remoteURL}/${database}`)
-    let url = `http://localhost:8088/${database}`
+    let url = `${remoteURL}/${database}`
     if (queryParams) {
       url += `?${queryParams}`
     }

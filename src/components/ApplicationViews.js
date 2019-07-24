@@ -21,7 +21,7 @@ export default class ApplicationViews extends Component {
       .then(events => newState.events = events)
       .then(() => API.getAll("tasks"))
       .then(tasks => newState.tasks = tasks)
-      .then(() => API.getAll("messages"))
+      .then(() => API.getAll("messages", "_expand=user"))
       .then(messages => newState.messages = messages)
       .then(() => this.setState(newState))
   }
@@ -35,7 +35,7 @@ export default class ApplicationViews extends Component {
         this.setState({
           messages: messages
         })
-      )
+        )
   }
 
   isAuthenticated = () => sessionStorage.getItem("credentials") !== null

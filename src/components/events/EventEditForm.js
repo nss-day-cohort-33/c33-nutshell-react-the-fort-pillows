@@ -1,25 +1,17 @@
 import React, { Component } from "react";
 import { Button, Form, Modal, Icon } from "semantic-ui-react";
-<<<<<<< HEAD
-import {Redirect} from "react-router-dom"
-=======
->>>>>>> master
 
 const buttonMargin = {
   margin: "2em"
 };
 
-export default class EventForm extends Component {
+export default class EventEditForm extends Component {
   state = {
     eventName: "",
     date: "",
     description: "",
     location: "",
-<<<<<<< HEAD
-    modalOpen: false
-=======
     open: false 
->>>>>>> master
     //-- This is et to false to keep the modal closed when the user visits the page --//
   };
 
@@ -50,7 +42,7 @@ toggle = () => {
     return (
       <div>
         <Modal
-
+        
           trigger={
             //-- Put toggle in trigger to make Modal appear on click --//
             <Button primary icon labelPosition="left" style={buttonMargin} onClick={this.toggle}>
@@ -102,11 +94,7 @@ toggle = () => {
                 />
               </Form.Field>
               <Button type="submit" onClick={this.constructNewEvent}>
-<<<<<<< HEAD
-              Submit
-=======
                 Submit
->>>>>>> master
               </Button>
             </Form>
           </Modal.Content>

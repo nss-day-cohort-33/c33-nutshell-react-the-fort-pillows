@@ -62,6 +62,15 @@ export default class ApplicationViews extends Component {
 //this confirm authentication
   isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
+  deleteEvent = (database, id) => {
+    API.delete(database, id)
+    .then(events =>
+      this.setState({
+        events:events
+      }))
+  }
+
+
   render() {
     return (
       <React.Fragment>
@@ -102,7 +111,7 @@ export default class ApplicationViews extends Component {
         <Route
           path="/events"
           render={props => {
-            return <Events {...props} events={this.state.events} addEvent={this.addEvent} />;
+            return <Events {...props} events={this.state.events} deleteEvent={this.deleteEvent} addEvent={this.addEvent} />;
           }}
         />
         <Route
@@ -125,7 +134,14 @@ export default class ApplicationViews extends Component {
           }}
         />
 
-        <Route path="/login" component={Login} />
+          <Route path="/login"
+          render={props => {
+            return (
+              <Login {...props} />
+            );
+          }}
+        />
+
         <Route path="/register" component={Register} />
       </React.Fragment>
     );

@@ -18,3 +18,9 @@
 .large-text {
     font-size: 1.25rem;
  }
+
+.closeButton {
+    display: flex;
+    justify-content: right;
+    margin-left: 95.7%;
+ }

@@ -1,21 +1,17 @@
 import React, { Component } from "react";
 import { Button, Dropdown, Menu, Icon } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import './NavBar.css'
 
 export default class NavBar extends Component {
-  state = { activeItem: "" };
+  state = { activeItem: "",
+            redirect: false};
   //--Above not in use yet--//
+
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
-handleLogOut = () => sessionStorage.clear()
-
-  render() {
-    const { activeItem } = this.state;
-    //TODO: for currently selected item --//
-
-
+render() {
     return (
       <Menu borderless size="huge">
         <Menu.Item header as="h2">
@@ -36,7 +32,7 @@ handleLogOut = () => sessionStorage.clear()
               <Link to="/tasks">Tasks</Link>
             </Dropdown.Item>
             <Dropdown.Item>
-              <Link to="/friends">Friends</Link>
+                <Link to="/friends">Friends</Link>
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

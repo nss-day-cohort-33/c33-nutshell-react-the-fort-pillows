@@ -3,7 +3,6 @@ import { Card, Icon } from "semantic-ui-react";
 
 const cardSize = {
   width: "25em",
-  height: "100%",
 }
 export default class EventCard extends Component {
   render() {

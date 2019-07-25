@@ -1,18 +1,17 @@
 import React, { Component } from "react";
 import { Button, Form, Modal, Icon } from "semantic-ui-react";
-import {Redirect} from "react-router-dom"
 
 const buttonMargin = {
   margin: "2em"
 };
 
-export default class EventForm extends Component {
+export default class NewsForm extends Component {
   state = {
-    eventName: "",
-    date: "",
-    description: "",
-    location: "",
-    modalOpen: false
+    url: "",
+    title: "",
+    synopsis: "",
+    time: "",
+    open: false 
     //-- This is et to false to keep the modal closed when the user visits the page --//
   };
 
@@ -26,15 +25,15 @@ toggle = () => {
     this.setState(stateToChange);
   };
 
-  constructNewEvent = evt => {
+  constructNewNews = evt => {
     evt.preventDefault();
-    const event = {
-      name: this.state.eventName,
-      date: this.state.date,
-      description: this.state.description,
-      location: this.state.location
+    const news = {
+      url: this.state.url,
+      title: this.state.title,
+      synopsis: this.state.synopsis,
+      time: this.state.time
     };
-    this.props.addEvent(event);
+    this.props.addNews(news);
     this.toggle()
     //--This toggle will close the Modal upon click --//
   };
@@ -43,58 +42,58 @@ toggle = () => {
     return (
       <div>
         <Modal
-
+        
           trigger={
             //-- Put toggle in trigger to make Modal appear on click --//
             <Button primary icon labelPosition="left" style={buttonMargin} onClick={this.toggle}>
               <Icon name="add" />
-              Add Event
+              Add News Article
             </Button>
           }
           //-sets state of Modal to current state--//
           open={this.state.modalOpen}
         >
           <div className="closeButton"><Modal.Header><Button icon="window close" onClick={this.toggle} /></Modal.Header></div>
-          <Modal.Header>Add Your Event</Modal.Header>
+          <Modal.Header>Add Your Article</Modal.Header>
           <Modal.Content>
             <Form>
               <Form.Field required>
-                <label htmlFor="eventName">Event Name</label>
+                <label htmlFor="title">Article Title</label>
                 <input
-                  id="eventName"
-                  placeholder="Name of Event"
+                  id="title"
+                  placeholder="Title"
                   onChange={this.handleFieldChange}
                   autoFocus
                   required
                 />
               </Form.Field>
               <Form.Field required>
-                <label htmlFor="date">Date</label>
+                <label htmlFor="time">Date</label>
                 <input
-                  type="date"
-                  id="date"
-                  placeholder="Date"
+                  type="text"
+                  id="time"
+                  placeholder="time"
                   onChange={this.handleFieldChange}
                   required
                 />
               </Form.Field>
               <Form.TextArea
-                id="description"
-                label="Event Description"
-                placeholder="Describe the Event"
+                id="synopsis"
+                label="Article Synopsis"
+                placeholder="Summary of Article"
                 onChange={this.handleFieldChange}
                 required
               />
               <Form.Field required>
-                <label htmlFor="location">Location</label>
+                <label htmlFor="url">URL</label>
                 <input
-                  id="location"
-                  placeholder="Location"
+                  id="url"
+                  placeholder="URL"
                   onChange={this.handleFieldChange}
                   required
                 />
               </Form.Field>
-              <Button type="submit" onClick={this.constructNewEvent}>
+              <Button type="submit" onClick={this.constructNewNews}>
                 Submit
               </Button>
             </Form>

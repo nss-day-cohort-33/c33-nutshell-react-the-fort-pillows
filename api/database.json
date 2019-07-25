@@ -22,9 +22,14 @@
   "friends": [],
   "messages": [
     {
-      "userId": 1,
+      "userId": 2,
       "message": "this is the best social media app ever!!!",
       "id": 1
+    },
+    {
+      "userId": 2,
+      "message": "hey dummy!",
+      "id": 2
     }
   ],
   "tasks": [
@@ -73,6 +78,20 @@
       "description": "Learning the more advanced feature of Semantic-UI and 'themeing'",
       "location": "Nashville Event Center",
       "id": 2
+    },
+    {
+      "id": 3,
+      "name": "Create Video Call with JS!!!!",
+      "date": "2019-08-14",
+      "description": "Seminar about WebCall API to create video call within a web app.",
+      "location": "Nashville Business Center"
+    },
+    {
+      "id": 4,
+      "name": "This is a NEW Event EDIT",
+      "date": "2019-08-22",
+      "description": "This is a Description of a New Event EDITED",
+      "location": "This is a NEW Location EDITED"
     }
   ],
   "news": [

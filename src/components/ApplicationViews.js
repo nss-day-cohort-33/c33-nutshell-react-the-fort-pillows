@@ -5,14 +5,18 @@ import Tasks from "./tasks/Tasks";
 import Register from "./Login/Registration";
 import Login from "./Login/Login"
 import Messages from "./messages/Messages"
-import RegistrationForm from "./Login/Registration";
 import Events from "./events/Events";
+import EventDashboardView from "./events/EventDashboardView"
+import News from "./news/News";
+
 
 export default class ApplicationViews extends Component {
   state = {
     messages: [],
     tasks: [],
     events: [],
+    users: [],
+    news: []
   }
 
   componentDidMount() {
@@ -21,8 +25,12 @@ export default class ApplicationViews extends Component {
       .then(events => newState.events = events)
       .then(() => API.getAll("tasks"))
       .then(tasks => newState.tasks = tasks)
-      .then(() => API.getAll("messages"))
+      .then(() => API.getAll("users"))
+      .then(users => newState.users = users)
+      .then(() => API.getAll("messages", "_expand=user"))
       .then(messages => newState.messages = messages)
+      .then(() => API.getAll("news"))
+      .then(news => newState.news = news)
       .then(() => this.setState(newState))
   }
 
@@ -32,14 +40,41 @@ export default class ApplicationViews extends Component {
       .then(messages =>
         this.setState({
           messages: messages
-        })
-      )
+        }))
   }
   addEvent = (data) => {
     API.post("events", data)
     .then(() => API.getAll("events"))
     .then(events => this.setState({
       events: events
+    }))
+  }
+//delete functions
+  deleteMessage = (database, id) => {
+    API.delete(database, id)
+    .then(messages =>
+      this.setState({
+        messages:messages
+      }))
+  }
+//update functions
+    updateMessage = (editMessage) => {
+      return API.put("messages", editMessage)
+      .then (() => API.getAll("messages", "_expand=user"))
+      .then( messages => {
+        this.setState({
+          messages: messages
+        })
+      })
+    }
+//this confirm authentication
+  isAuthenticated = () => sessionStorage.getItem("credentials") !== null
+
+  addNews = (data) => {
+    API.post("news", data)
+    .then(() => API.getAll("news"))
+    .then(news => this.setState({
+      news: news
     }))
   }
 
@@ -58,8 +93,25 @@ export default class ApplicationViews extends Component {
       tasks: tasks
     }))
   }
+  deleteNews = (database, id) => {
+    API.delete(database, id)
+    .then(news =>
+      this.setState({
+        news:news
+      }))
+  }
 
-  isAuthenticated = () => sessionStorage.getItem("id") !== null
+  updateEvent = (database, id) => {
+    API.put(database, id)
+    .then(() => API.getAll("events"))
+    .then(events => this.setState({events:events}))
+  }
+
+  updateNews = (database, id) => {
+    API.put(database, id)
+    .then(() => API.getAll("news"))
+    .then(news => this.setState({news:news}))
+  }
 
   render() {
     return (
@@ -69,7 +121,11 @@ export default class ApplicationViews extends Component {
           path="/"
           render={(props) => {
             if (this.isAuthenticated()) {
-              return <Messages messages={this.state.messages} addMessage={this.addMessage} />
+              return <Messages messages={this.state.messages}
+              addMessage={this.addMessage}
+              deleteMessage={this.deleteMessage}
+              users={this.state.users}
+              updateMessage={this.updateMessage}/>
             } else {
               return <Redirect to="/login" />
             };
@@ -89,16 +145,21 @@ export default class ApplicationViews extends Component {
           }}
         />
         <Route
-          path="/news"
+          exact path="/news"
           render={props => {
-            return null;
-            // Remove null and return the component which will show the messages
+            return <News {...props} news={this.state.news} deleteNews={this.deleteNews} addNews={this.addNews} updateNews={this.updateNews} />;
           }}
         />
         <Route
           path="/events"
           render={props => {
-            return <Events {...props} events={this.state.events} deleteEvent={this.deleteEvent} addEvent={this.addEvent} />;
+            return <Events {...props} events={this.state.events} deleteEvent={this.deleteEvent} addEvent={this.addEvent} updateEvent={this.updateEvent} />;
+          }}
+        />
+        <Route
+          exact path="/"
+          render={props => {
+            return <EventDashboardView events={this.state.events} />;
           }}
         />
         <Route

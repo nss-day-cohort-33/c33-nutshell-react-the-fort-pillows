@@ -1,37 +1,32 @@
 import React, { Component } from "react";
-import { Button, Form, Modal} from "semantic-ui-react";
-import API from '../../module/API'
+import { Button, Form, Modal } from "semantic-ui-react";
+import API from "../../module/API";
 
 const buttonMargin = {
   margin: "2em"
 };
 
-
-
-export default class EventEditForm extends Component {
+export default class NewsEditForm extends Component {
   state = {
-    name: "",
-    date: "",
-    description: "",
-    location: "",
+    url: "",
+    title: "",
+    synopsis: "",
+    time: "",
     open: false
     //-- This is et to false to keep the modal closed when the user visits the page --//
   };
 
   componentDidMount() {
-    API.get("events", this.props.eventId)
-    .then(event => {
+    API.get("news", this.props.newsId)
+    .then(news => {
       this.setState({
-        name: event.name,
-        date: event.date,
-        description: event.description,
-        location: event.location
+        url: news.url,
+        title: news.title,
+        synopsis: news.synopsis,
+        time: news.time,
       });
     });
   }
-
-
-
 
   toggle = () => {
     this.setState({ modalOpen: !this.state.modalOpen });
@@ -39,21 +34,21 @@ export default class EventEditForm extends Component {
 
   handleFieldChange = evt => {
     const stateToChange = {};
-    console.log("whats this?", stateToChange[evt.target.id])
+    console.log("whats this?", stateToChange[evt.target.id]);
     stateToChange[evt.target.id] = evt.target.value;
     this.setState(stateToChange);
   };
 
-  updateExistingEvent = evt => {
+  updateExistingNews = evt => {
     evt.preventDefault();
-    const editedEvent = {
-      id: this.props.eventId,
-      name: this.state.name,
-      date: this.state.date,
-      description: this.state.description,
-      location: this.state.location
+    const editedNews = {
+      id: this.props.newsId,
+      url: this.state.url,
+      title: this.state.title,
+      synopsis: this.state.synopsis,
+      time: this.state.time
     };
-    this.props.updateEvent("events", editedEvent);
+    this.props.updateNews("News", editedNews);
     this.toggle();
   };
 
@@ -63,10 +58,7 @@ export default class EventEditForm extends Component {
         <Modal
           trigger={
             //-- Put toggle in trigger to make Modal appear on click --//
-            <Button
-              icon="pencil"
-              onClick={this.toggle}
-             />
+            <Button icon="pencil" onClick={this.toggle} />
           }
           //-sets state of Modal to current state--//
           open={this.state.modalOpen}
@@ -76,52 +68,52 @@ export default class EventEditForm extends Component {
               <Button icon="window close" onClick={this.toggle} />
             </Modal.Header>
           </div>
-          <Modal.Header>Edit Your Event</Modal.Header>
+          <Modal.Header>Edit Your Article Archive</Modal.Header>
           <Modal.Content>
             <Form>
               <Form.Field required>
-                <label htmlFor="name">Event Name</label>
+                <label htmlFor="title">Event Name</label>
                 <input
-                  id="name"
-                  placeholder="Name of Event"
+                  id="title"
+                  placeholder="Title of Article"
                   onChange={this.handleFieldChange}
                   // -- Add value for Edit Form --//
-                  value={this.state.name}
+                  value={this.state.title}
                 />
               </Form.Field>
               <Form.Field required>
-                <label htmlFor="date">Date</label>
+                <label htmlFor="time">Date</label>
                 <input
-                  type="date"
-                  id="date"
-                  placeholder="Date"
+                  type="text"
+                  id="time"
+                  placeholder="time"
                   onChange={this.handleFieldChange}
                   // -- Add value for Edit Form --//
-                  value={this.state.date}
+                  value={this.state.time}
                   required
                 />
               </Form.Field>
               <Form.TextArea
-                id="description"
-                label="Event Description"
-                placeholder="Describe the Event"
+                id="synopsis"
+                label="Article Synopsis"
+                placeholder="Summary of Article"
                 onChange={this.handleFieldChange}
                 // -- Add value for Edit Form --//
-                value={this.state.description}
+                value={this.state.synopsis}
                 required
               />
               <Form.Field required>
-                <label htmlFor="location">Location</label>
+                <label htmlFor="url">URL</label>
                 <input
-                  id="location"
-                  placeholder="Location"
+                  id="url"
+                  placeholder="URL"
                   onChange={this.handleFieldChange}
                   // -- Add value for Edit Form --//
-                  value={this.state.location}
+                  value={this.state.url}
                   required
                 />
               </Form.Field>
-              <Button type="submit" onClick={this.updateExistingEvent}>
+              <Button type="submit" onClick={this.updateExistingNews}>
                 Submit
               </Button>
             </Form>

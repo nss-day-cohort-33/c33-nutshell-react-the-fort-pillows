@@ -8,13 +8,15 @@ import Messages from "./messages/Messages"
 import RegistrationForm from "./Login/Registration";
 import Events from "./events/Events";
 import EventDashboardView from "./events/EventDashboardView"
-import { Grid } from "semantic-ui-react";
+import News from "./news/News";
+
 
 export default class ApplicationViews extends Component {
   state = {
     messages: [],
     tasks: [],
     events: [],
+    news: [],
   }
 
   componentDidMount() {
@@ -25,6 +27,8 @@ export default class ApplicationViews extends Component {
       .then(tasks => newState.tasks = tasks)
       .then(() => API.getAll("messages"))
       .then(messages => newState.messages = messages)
+      .then(() => API.getAll("news"))
+      .then(news => newState.news = news)
       .then(() => this.setState(newState))
   }
 
@@ -45,6 +49,14 @@ export default class ApplicationViews extends Component {
     }))
   }
 
+  addNews = (data) => {
+    API.post("news", data)
+    .then(() => API.getAll("news"))
+    .then(news => this.setState({
+      news: news
+    }))
+  }
+
   deleteEvent = (database, id) => {
     API.delete(database, id)
     .then(events =>
@@ -53,10 +65,24 @@ export default class ApplicationViews extends Component {
       }))
   }
 
+  deleteNews = (database, id) => {
+    API.delete(database, id)
+    .then(news =>
+      this.setState({
+        news:news
+      }))
+  }
+
   updateEvent = (database, id) => {
     API.put(database, id)
     .then(() => API.getAll("events"))
     .then(events => this.setState({events:events}))
+  }
+
+  updateNews = (database, id) => {
+    API.put(database, id)
+    .then(() => API.getAll("news"))
+    .then(news => this.setState({news:news}))
   }
 
   isAuthenticated = () => sessionStorage.getItem("id") !== null
@@ -91,8 +117,7 @@ export default class ApplicationViews extends Component {
         <Route
           path="/news"
           render={props => {
-            return null;
-            // Remove null and return the component which will show the messages
+            return <News {...props} news={this.state.news} deleteNews={this.deleteNews} addNews={this.addNews} updateNews={this.updateNews} />;
           }}
         />
         <Route

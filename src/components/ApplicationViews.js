@@ -7,6 +7,8 @@ import Login from "./Login/Login"
 import Messages from "./messages/Messages"
 import RegistrationForm from "./Login/Registration";
 import Events from "./events/Events";
+import EventDashboardView from "./events/EventDashboardView"
+import { Grid } from "semantic-ui-react";
 
 export default class ApplicationViews extends Component {
   state = {
@@ -97,6 +99,12 @@ export default class ApplicationViews extends Component {
           path="/events"
           render={props => {
             return <Events {...props} events={this.state.events} deleteEvent={this.deleteEvent} addEvent={this.addEvent} updateEvent={this.updateEvent} />;
+          }}
+        />
+        <Route
+          exact path="/"
+          render={props => {
+            return <EventDashboardView events={this.state.events} />;
           }}
         />
         <Route

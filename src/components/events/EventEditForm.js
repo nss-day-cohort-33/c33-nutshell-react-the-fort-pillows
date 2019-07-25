@@ -1,23 +1,42 @@
 import React, { Component } from "react";
-import { Button, Form, Modal, Icon } from "semantic-ui-react";
+import { Button, Form, Modal} from "semantic-ui-react";
+import API from '../../module/API'
 
 const buttonMargin = {
   margin: "2em"
 };
 
+
+
 export default class EventEditForm extends Component {
   state = {
-    eventName: "",
+    name: "",
     date: "",
     description: "",
     location: "",
-    open: false 
+    open: false
     //-- This is et to false to keep the modal closed when the user visits the page --//
   };
 
-toggle = () => {
-  this.setState({modalOpen: !this.state.modalOpen})
-}
+  componentDidMount() {
+    API.get("events", this.props.eventId)
+    .then(event => {
+      this.setState({
+        name: event.name,
+        date: event.date,
+        description: event.description,
+        location: event.location
+      });
+      console.log("EVENT", event)
+    });
+  }
+
+
+
+
+  toggle = () => {
+    this.setState({ modalOpen: !this.state.modalOpen });
+  };
 
   handleFieldChange = evt => {
     const stateToChange = {};
@@ -25,36 +44,39 @@ toggle = () => {
     this.setState(stateToChange);
   };
 
-  constructNewEvent = evt => {
+  updateExistingEvent = evt => {
     evt.preventDefault();
-    const event = {
-      name: this.state.eventName,
+    const editedEvent = {
+      id: this.props.eventId,
+      name: this.state.name,
       date: this.state.date,
       description: this.state.description,
       location: this.state.location
     };
-    this.props.addEvent(event);
-    this.toggle()
-    //--This toggle will close the Modal upon click --//
+    this.props.updateEvent("events", editedEvent);
+    this.toggle();
   };
 
   render() {
     return (
       <div>
         <Modal
-        
           trigger={
             //-- Put toggle in trigger to make Modal appear on click --//
-            <Button primary icon labelPosition="left" style={buttonMargin} onClick={this.toggle}>
-              <Icon name="add" />
-              Add Event
-            </Button>
+            <Button
+              icon="pencil"
+              onClick={this.toggle}
+             />
           }
           //-sets state of Modal to current state--//
           open={this.state.modalOpen}
         >
-          <div className="closeButton"><Modal.Header><Button icon="window close" onClick={this.toggle} /></Modal.Header></div>
-          <Modal.Header>Add Your Event</Modal.Header>
+          <div className="closeButton">
+            <Modal.Header>
+              <Button icon="window close" onClick={this.toggle} />
+            </Modal.Header>
+          </div>
+          <Modal.Header>Edit Your Event</Modal.Header>
           <Modal.Content>
             <Form>
               <Form.Field required>
@@ -63,8 +85,8 @@ toggle = () => {
                   id="eventName"
                   placeholder="Name of Event"
                   onChange={this.handleFieldChange}
-                  autoFocus
-                  required
+                  // -- Add value for Edit Form --//
+                  value={this.state.name}
                 />
               </Form.Field>
               <Form.Field required>
@@ -74,6 +96,8 @@ toggle = () => {
                   id="date"
                   placeholder="Date"
                   onChange={this.handleFieldChange}
+                  // -- Add value for Edit Form --//
+                  value={this.state.date}
                   required
                 />
               </Form.Field>
@@ -82,6 +106,8 @@ toggle = () => {
                 label="Event Description"
                 placeholder="Describe the Event"
                 onChange={this.handleFieldChange}
+                // -- Add value for Edit Form --//
+                value={this.state.description}
                 required
               />
               <Form.Field required>
@@ -90,10 +116,12 @@ toggle = () => {
                   id="location"
                   placeholder="Location"
                   onChange={this.handleFieldChange}
+                  // -- Add value for Edit Form --//
+                  value={this.state.location}
                   required
                 />
               </Form.Field>
-              <Button type="submit" onClick={this.constructNewEvent}>
+              <Button type="submit" onClick={this.updateExistingEvent}>
                 Submit
               </Button>
             </Form>

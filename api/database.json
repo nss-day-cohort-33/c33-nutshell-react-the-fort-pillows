@@ -60,6 +60,13 @@
       "description": "Learning the more advanced feature of Semantic-UI and 'themeing'",
       "location": "Nashville Event Center",
       "id": 2
+    },
+    {
+      "name": "Create Video Call with JS",
+      "date": "2019-08-14",
+      "description": "Seminar about WebCall API to create video call within a web app.",
+      "location": "Nashville Business Center",
+      "id": 3
     }
   ],
   "news": [

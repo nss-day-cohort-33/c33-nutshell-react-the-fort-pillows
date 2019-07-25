@@ -29,8 +29,8 @@ export default class EventCard extends Component {
             </Card.Content>
             <br />
             <Card.Content>
-              <div>
-                <Button icon="pencil" on cli/>
+              <div className="format-buttons">
+                <EventEditForm eventId={this.props.event.id} updateEvent={this.props.updateEvent} {...this.props}/>
                 {/* For Confirmation Box */}
                 <Button icon="trash alternate" onClick={this.open} />
                 <Confirm

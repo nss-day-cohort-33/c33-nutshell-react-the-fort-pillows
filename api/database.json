@@ -67,32 +67,18 @@
       "id": 2
     },
     {
-      "name": "Taco",
-      "date": "2019-07-26",
-      "description": "BOOOO",
-      "location": "Here",
-      "id": 3
+      "id": 3,
+      "name": "Create Video Call with JS!!!!",
+      "date": "2019-08-14",
+      "description": "Seminar about WebCall API to create video call within a web app.",
+      "location": "Nashville Business Center"
     },
     {
-      "name": "",
-      "date": "",
-      "description": "",
-      "location": "",
-      "id": 4
-    },
-    {
-      "name": "stuff",
-      "date": "2019-12-31",
-      "description": "stuff",
-      "location": "stuff",
-      "id": 5
-    },
-    {
-      "name": "",
-      "date": "",
-      "description": "",
-      "location": "",
-      "id": 6
+      "id": 4,
+      "name": "This is a NEW Event EDIT",
+      "date": "2019-08-22",
+      "description": "This is a Description of a New Event EDITED",
+      "location": "This is a NEW Location EDITED"
     }
   ],
   "news": [

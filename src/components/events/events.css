@@ -24,3 +24,8 @@
     justify-content: right;
     margin-left: 95.7%;
  }
+
+ .format-buttons {
+     display: flex;
+     justify-content: space-evenly
+ }

@@ -27,7 +27,6 @@ export default class EventEditForm extends Component {
         description: event.description,
         location: event.location
       });
-      console.log("EVENT", event)
     });
   }
 
@@ -40,6 +39,7 @@ export default class EventEditForm extends Component {
 
   handleFieldChange = evt => {
     const stateToChange = {};
+    console.log("whats this?", stateToChange[evt.target.id])
     stateToChange[evt.target.id] = evt.target.value;
     this.setState(stateToChange);
   };
@@ -86,7 +86,8 @@ export default class EventEditForm extends Component {
                   placeholder="Name of Event"
                   onChange={this.handleFieldChange}
                   // -- Add value for Edit Form --//
-                  value={this.state.name}
+                  // -- Also... had to change value to defaultValue in order to fix typing issue... doesn't make sense"
+                  defaultValue={this.state.name}
                 />
               </Form.Field>
               <Form.Field required>

@@ -11,12 +11,6 @@
       "email": "smarty@gmail.com",
       "password": "smarty",
       "id": 2
-    },
-    {
-      "name": "joytestuser",
-      "email": "joytest@joytest.com",
-      "password": "joytestpas",
-      "id": 3
     }
   ],
   "friends": [],
@@ -30,6 +24,41 @@
       "userId": 2,
       "message": "hey dummy!",
       "id": 2
+    },
+    {
+      "userId": 1,
+      "message": "hello",
+      "id": 3
+    },
+    {
+      "userId": 2,
+      "message": "hey",
+      "id": 5
+    },
+    {
+      "userId": 2,
+      "message": "unline",
+      "id": 6
+    },
+    {
+      "userId": 2,
+      "message": "blah",
+      "id": 7
+    },
+    {
+      "userId": 2,
+      "message": "hey",
+      "id": 8
+    },
+    {
+      "userId": 2,
+      "message": "hola",
+      "id": 9
+    },
+    {
+      "userId": 2,
+      "message": "time",
+      "id": 10
     }
   ],
   "tasks": [
@@ -53,45 +82,29 @@
       "date": "2019-03-01",
       "complete": true,
       "id": 3
-    },
-    {
-      "userId": 1,
-      "task": "testthistask",
-      "date": "2019-07-25",
-      "complete": false,
-      "id": 6
     }
   ],
   "events": [
     {
-      "userId": 1,
+      "id": 1,
       "name": "React JS Beginner Seminar",
       "date": "2019-07-30",
       "description": "JS Seminar to teach developers the basics of React JS",
-      "location": "Nashville Public Library",
-      "id": 1
+      "location": "Nashville Public Library1"
     },
     {
-      "userId": 1,
+      "id": 2,
       "name": "Semantic-UI Seminar",
       "date": "2019-07-31",
       "description": "Learning the more advanced feature of Semantic-UI and 'themeing'",
-      "location": "Nashville Event Center",
-      "id": 2
+      "location": "Nashville Event Center1"
     },
     {
-      "id": 3,
-      "name": "Create Video Call with JS!!!!",
-      "date": "2019-08-14",
-      "description": "Seminar about WebCall API to create video call within a web app.",
-      "location": "Nashville Business Center"
-    },
-    {
-      "id": 4,
-      "name": "This is a NEW Event EDIT",
-      "date": "2019-08-22",
-      "description": "This is a Description of a New Event EDITED",
-      "location": "This is a NEW Location EDITED"
+      "name": "Taco",
+      "date": "2019-07-26",
+      "description": "BOOOO",
+      "location": "Here",
+      "id": 3
     }
   ],
   "news": [

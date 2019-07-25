@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Feed, Input, Message, FeedSummary, Button, Icon, Dropdown, Confirm } from 'semantic-ui-react'
 import MessageCard from './MessageCard';
+import MessageCardNo from './MessageIf';
+import './messages.css'
 
 export default class Messages extends Component {
     state = {
@@ -24,23 +26,30 @@ export default class Messages extends Component {
             message: this.state.message
         };
         this.props.addMessage(message)
+
     }
 
 
     // this.FeedExampleEventsProp(this.props.messages)
     render() {
+        let session = parseInt(sessionStorage.getItem("id"))
         return (
             <React.Fragment>
-                <div className="ui padded grid">
+                <div className="messageBox">
                     <Message floating>
-                        <Feed>
+                        <Feed className="max" maxline={5}>
                             <FeedSummary>
                                 {
                                     this.props.messages.map(message =>
-                                    <div key={message.id}>
-                                        <MessageCard message={message} {...this.props} />
-                                    </div>)
-                                }
+                                     <div key={message.id} >
+                                        <MessageCard className="card" message={message} {...this.props} />
+                                        </div>
+                                     /* message.userId === session ? */
+                                        /* : */
+                                            /* <div key={message.id}>
+                                                <MessageCardNo message={message} {...this.props} />
+                                            </div> */
+                                    )}
                             </FeedSummary>
                         </Feed>
                         <div>

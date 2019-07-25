@@ -16,7 +16,7 @@ export default class ApplicationViews extends Component {
     messages: [],
     tasks: [],
     events: [],
-    news: [],
+    news: []
   }
 
   componentDidMount() {
@@ -115,7 +115,7 @@ export default class ApplicationViews extends Component {
           }}
         />
         <Route
-          path="/news"
+          exact path="/news"
           render={props => {
             return <News {...props} news={this.state.news} deleteNews={this.deleteNews} addNews={this.addNews} updateNews={this.updateNews} />;
           }}

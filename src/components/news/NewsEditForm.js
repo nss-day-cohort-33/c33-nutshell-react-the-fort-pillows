@@ -17,12 +17,13 @@ export default class NewsEditForm extends Component {
   };
 
   componentDidMount() {
-    API.get("news", this.props.newsId).then(news => {
+    API.get("news", this.props.newsId)
+    .then(news => {
       this.setState({
-        name: news.name,
-        date: news.date,
-        description: news.description,
-        location: news.location
+        url: news.url,
+        title: news.title,
+        synopsis: news.synopsis,
+        time: news.time,
       });
     });
   }
@@ -98,7 +99,7 @@ export default class NewsEditForm extends Component {
                 placeholder="Summary of Article"
                 onChange={this.handleFieldChange}
                 // -- Add value for Edit Form --//
-                value={this.state.description}
+                value={this.state.synopsis}
                 required
               />
               <Form.Field required>

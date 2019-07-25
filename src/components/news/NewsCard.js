@@ -7,6 +7,8 @@ import NewsEditForm from "./NewsEditForm"
 const cardSize = {
   width: "25em"
 };
+
+
 export default class NewsCard extends Component {
   //--For Confirmation Box--//
   state = { open: false };
@@ -15,9 +17,11 @@ export default class NewsCard extends Component {
   open = () => this.setState({ open: true });
   close = () => this.setState({ open: false });
 
+ 
   render() {
     return (
       <div key={this.props.news.id}>
+       
         <Card raised className="large-text card-margin" style={cardSize}>
           <Card.Content className="card-margin">
             <Card.Header>{this.props.news.title}</Card.Header>
@@ -27,13 +31,13 @@ export default class NewsCard extends Component {
             <br />
             <Card.Content extra>
               <Icon name="linkify" />
-              <a href={this.props.news.url}>Link</a>
+              <a href={this.props.news.url} target="_blank">Link</a>
             </Card.Content>
             <br />
             <Card.Content>
               <div className="format-buttons">
                 {/* Had to pass newsId to edit form as match.params only works if id is in path... Modal doesn't need a path... */}
-                <NewsEditForm newsId={this.props.news.id} updateNews={this.props.updateNews} {...this.props}/>
+                <NewsEditForm newsId={this.props.news.id} updateNews={this.props.updateNews} />
                 {/* For Confirmation Box */}
                 <Button icon="trash alternate" onClick={this.open} />
                 <Confirm

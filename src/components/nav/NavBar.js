@@ -8,27 +8,10 @@ export default class NavBar extends Component {
             redirect: false};
   //--Above not in use yet--//
 
-  setRedirect = () => {
-    this.setState({
-      redirect:true
-    })
-  }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
-  renderRedirect = () => {
-    if (this.state.redirect) {
-      console.log("renderRedirect calls")
-      return <Redirect to='/login'/>
-    }
-    sessionStorage.clear()
-  }
-
-  render() {
-    const { activeItem } = this.state;
-    //TODO: for currently selected item --//
-
-
+render() {
     return (
       <Menu borderless size="huge">
         <Menu.Item header as="h2">
@@ -60,7 +43,7 @@ export default class NavBar extends Component {
               <Icon name="user" />
               Username
             </Menu.Item>
-            <Button primary onClick={this.setRedirect}>Logout</Button>
+            <Button primary onClick={this.handleLogOut}>Logout</Button>
           </Menu.Item>
         </Menu.Menu>
       </Menu>

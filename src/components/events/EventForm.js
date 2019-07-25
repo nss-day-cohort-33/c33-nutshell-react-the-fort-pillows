@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Form, Modal, Icon } from "semantic-ui-react";
+import {Redirect} from "react-router-dom"
 
 const buttonMargin = {
   margin: "2em"
@@ -11,7 +12,7 @@ export default class EventForm extends Component {
     date: "",
     description: "",
     location: "",
-    open: false 
+    modalOpen: false
     //-- This is et to false to keep the modal closed when the user visits the page --//
   };
 
@@ -42,7 +43,7 @@ toggle = () => {
     return (
       <div>
         <Modal
-        
+
           trigger={
             //-- Put toggle in trigger to make Modal appear on click --//
             <Button primary icon labelPosition="left" style={buttonMargin} onClick={this.toggle}>

@@ -1,89 +1,70 @@
 import React, { Component } from 'react'
-import { Feed, Input, Message, FeedSummary, Button, Icon } from 'semantic-ui-react'
+import { Feed, Input, Message, FeedSummary, Button, Icon, Dropdown, Confirm } from 'semantic-ui-react'
+import MessageCard from './MessageCard';
 
 export default class Messages extends Component {
     state = {
-        userId: "",
-        message: ""
+        userId: 2,
+        message: "",
     }
 
-
-    FeedExampleEventsProp = (events) => <Feed events={events} />
+    // FeedExampleEventsProp = (events) => <Feed events={events} />
 
     handleFieldChange = evt => {
         const stateToChange = {}
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }
-
-    handleKeyPress = event => {
-        event.preventDefault();
-        if (event.key === "Enter") {
-            console.log("you pressed enter")
-            const message = {
-                userId: this.state.userId,
-                message: this.state.message
-            }
-            console.log("state change", message)
-            this.props.addMessage(message)
-                .then(() => this.props.history.push("/"))
-        }
-    }
-    handleClick = event => {
-        event.preventDefault();
+    //TODO: how is userId passed in?
+    handleClick = evt => {
         console.log("you clicked")
+        evt.preventDefault();
         const message = {
             userId: this.state.userId,
             message: this.state.message
-        }
-        console.log("state change", message)
+        };
         this.props.addMessage(message)
-            .then(() => this.props.history.push("/"))
     }
 
 
-
-// this.FeedExampleEventsProp(this.props.messages)
-render() {
-    return (
-        <React.Fragment>
-            <div className="ui padded grid">
-                <Message >
-                    <Feed>
-                        <FeedSummary>
-                            {
-                                this.props.messages.map(message =>
+    // this.FeedExampleEventsProp(this.props.messages)
+    render() {
+        return (
+            <React.Fragment>
+                <div className="ui padded grid">
+                    <Message floating>
+                        <Feed>
+                            <FeedSummary>
+                                {
+                                    this.props.messages.map(message =>
                                     <div key={message.id}>
-                                        {message.message}
-                                    </div>
-                                )
-                            }
-                        </FeedSummary>
-                    </Feed>
-                    <div>
-                        <form>
+                                        <MessageCard message={message} {...this.props} />
+                                    </div>)
+                                }
+                            </FeedSummary>
+                        </Feed>
+                        <div>
                             <Input
                                 id="message"
                                 type="text"
                                 autoFocus
                                 placeholder="Got something to say?"
-                                onKeyDown={event => this.handleKeyPress}
-                                onChange={this.handleFieldChange}>
+                                onChange={this.handleFieldChange}
+                            >
                             </Input>
                             <Button
                                 icon
-                                onClick={this.handleclick}
-                            >
+                                type="submit"
+                                onClick={this.handleClick}>
                                 <Icon name="chat"></Icon>
                             </Button>
-                        </form>
 
-                    </div>
-                </Message>
-            </div>
-        </React.Fragment>
-    )
-}
+                        </div>
+                    </Message>
+                </div>
+            </React.Fragment>
+        )
+    }
 }
 
 // onKeyUp={this.handleKeyPress}>

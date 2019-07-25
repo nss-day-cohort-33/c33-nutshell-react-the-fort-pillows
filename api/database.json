@@ -16,9 +16,14 @@
   "friends": [],
   "messages": [
     {
-      "userId": 1,
+      "userId": 2,
       "message": "this is the best social media app ever!!!",
       "id": 1
+    },
+    {
+      "userId": 2,
+      "message": "hey dummy!",
+      "id": 2
     }
   ],
   "tasks": [

@@ -13,7 +13,7 @@ export default class News extends Component {
           <NewsForm addNews={this.props.addNews} {...this.props} />
         </div>
         <div className="card-container">
-            {this.props.news.map(news => (
+            {this.props.news.filter(news => news.userId === parseInt(sessionStorage.getItem("id"))).map(news => (
              
               
               <NewsCard key={news.id} news={news} deleteNews={this.props.deleteNews} updateNews={this.props.updateNews} />

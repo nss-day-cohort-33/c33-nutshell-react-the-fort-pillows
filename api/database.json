@@ -13,10 +13,16 @@
       "id": 2
     },
     {
-      "name": "joytestuser",
-      "email": "joytest@joytest.com",
-      "password": "joytestpas",
+      "username": "test",
+      "email": "test",
+      "password": "test",
       "id": 3
+    },
+    {
+      "username": "test2",
+      "email": "test2",
+      "password": "test2",
+      "id": 4
     }
   ],
   "friends": [],
@@ -80,6 +86,7 @@
       "id": 2
     },
     {
+      "userId": 1,
       "id": 3,
       "name": "Create Video Call with JS!!!!",
       "date": "2019-08-14",
@@ -87,6 +94,7 @@
       "location": "Nashville Business Center"
     },
     {
+      "userId": 1,
       "id": 4,
       "name": "This is a NEW Event EDIT",
       "date": "2019-08-22",

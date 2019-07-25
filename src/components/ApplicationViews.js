@@ -68,7 +68,7 @@ export default class ApplicationViews extends Component {
       })
     }
 //this confirm authentication
-  isAuthenticated = () => sessionStorage.getItem("credentials") !== null
+  // isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
   addNews = (data) => {
     API.post("news", data)
@@ -120,30 +120,14 @@ export default class ApplicationViews extends Component {
           exact
           path="/"
           render={(props) => {
-            if (this.isAuthenticated()) {
               return <Messages messages={this.state.messages}
               addMessage={this.addMessage}
               deleteMessage={this.deleteMessage}
               users={this.state.users}
               updateMessage={this.updateMessage}/>
-            } else {
-              return <Redirect to="/login" />
-            };
+      
             //This will be Dashboard
           }} />
-        <Route
-          exact
-          path="/login"
-          render={props => {
-            return null;
-          }} />
-        <Route
-          exact
-          path="/register"
-          render={props => {
-            return null
-          }}
-        />
         <Route
           exact path="/news"
           render={props => {

@@ -11,6 +11,12 @@
       "email": "smarty@gmail.com",
       "password": "smarty",
       "id": 2
+    },
+    {
+      "name": "joytestuser",
+      "email": "joytest@joytest.com",
+      "password": "joytestpas",
+      "id": 3
     }
   ],
   "friends": [],
@@ -42,6 +48,13 @@
       "date": "2019-03-01",
       "complete": true,
       "id": 3
+    },
+    {
+      "userId": 1,
+      "task": "testthistask",
+      "date": "2019-07-25",
+      "complete": false,
+      "id": 6
     }
   ],
   "events": [

@@ -51,6 +51,14 @@ export default class ApplicationViews extends Component {
       }))
   }
 
+  addTask = (data) => {
+    API.post("tasks", data)
+    .then(() => API.getAll("tasks"))
+    .then(tasks => this.setState({
+      tasks: tasks
+    }))
+  }
+
   isAuthenticated = () => sessionStorage.getItem("id") !== null
 
   render() {
@@ -98,7 +106,8 @@ export default class ApplicationViews extends Component {
           //TODO:  Delete this later--FROM Here 2--Joy is using this to test the Tasks component
           render={props => {
             return (
-              <Tasks tasks={this.state.tasks} />
+              <Tasks    addTask={this.addTask}
+                        tasks={this.state.tasks} />
             );
             //TODO:  Delete this later--FROM Here 2--Joy is using this to test the Tasks component
             // return null;

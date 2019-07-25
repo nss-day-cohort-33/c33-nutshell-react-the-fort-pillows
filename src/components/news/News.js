@@ -10,7 +10,7 @@ export default class News extends Component {
       <React.Fragment>
         <div className="news-header">
           <h1>News Archive</h1>
-          <NewsForm addNews={this.props.addNews} {...this.props} />
+          <NewsForm currentUser={this.props.currentUser} addNews={this.props.addNews} {...this.props} />
         </div>
         <div className="card-container">
             {this.props.news.filter(news => news.userId === parseInt(sessionStorage.getItem("id"))).map(news => (

@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { Button, Form, Modal, Icon } from "semantic-ui-react";
 
-const currentUser = parseInt(sessionStorage.getItem("id"));
 
 const buttonMargin = {
   margin: "2em"
-};
+}
 
 export default class NewsForm extends Component {
   state = {
@@ -18,7 +17,6 @@ export default class NewsForm extends Component {
     //-- This is et to false to keep the modal closed when the user visits the page --//
   };
 
-  currentUser = parseInt(sessionStorage.getItem("id"));
 
   toggle = () => {
     this.setState({ modalOpen: !this.state.modalOpen });
@@ -33,7 +31,7 @@ export default class NewsForm extends Component {
   constructNewNews = evt => {
     evt.preventDefault();
     const news = {
-      userId: currentUser,
+      userId: this.props.currentUser,
       url: this.state.url,
       title: this.state.title,
       synopsis: this.state.synopsis,

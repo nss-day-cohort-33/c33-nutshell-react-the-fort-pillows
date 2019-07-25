@@ -16,7 +16,8 @@ export default class ApplicationViews extends Component {
     tasks: [],
     events: [],
     users: [],
-    news: []
+    news: [],
+    currentUser: parseInt(sessionStorage.getItem("id"))
   }
 
   componentDidMount() {
@@ -131,13 +132,13 @@ export default class ApplicationViews extends Component {
         <Route
           exact path="/news"
           render={props => {
-            return <News {...props} news={this.state.news} deleteNews={this.deleteNews} addNews={this.addNews} updateNews={this.updateNews} />;
+            return <News {...props} currentUser={this.state.currentUser} news={this.state.news} deleteNews={this.deleteNews} addNews={this.addNews} updateNews={this.updateNews} />;
           }}
         />
         <Route
           path="/events"
           render={props => {
-            return <Events {...props} events={this.state.events} deleteEvent={this.deleteEvent} addEvent={this.addEvent} updateEvent={this.updateEvent} />;
+            return <Events {...props} currentUser={this.state.currentUser} events={this.state.events} deleteEvent={this.deleteEvent} addEvent={this.addEvent} updateEvent={this.updateEvent} />;
           }}
         />
         <Route

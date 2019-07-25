@@ -19,7 +19,7 @@ export default class EventForm extends Component {
     //-- This is et to false to keep the modal closed when the user visits the page --//
   };
 
-  currentUser = parseInt(sessionStorage.getItem("id"));
+  // currentUser = parseInt(sessionStorage.getItem("id"));
 
   toggle = () => {
     this.setState({ modalOpen: !this.state.modalOpen });
@@ -34,7 +34,7 @@ export default class EventForm extends Component {
   constructNewEvent = evt => {
     evt.preventDefault();
     const event = {
-      userId: currentUser,
+      userId: this.props.currentUser,
       name: this.state.eventName,
       date: this.state.date,
       description: this.state.description,

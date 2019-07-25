@@ -11,18 +11,6 @@
       "email": "smarty@gmail.com",
       "password": "smarty",
       "id": 2
-    },
-    {
-      "username": "test",
-      "email": "test",
-      "password": "test",
-      "id": 3
-    },
-    {
-      "username": "test2",
-      "email": "test2",
-      "password": "test2",
-      "id": 4
     }
   ],
   "friends": [],

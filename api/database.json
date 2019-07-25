@@ -67,6 +67,13 @@
       "description": "Seminar about WebCall API to create video call within a web app.",
       "location": "Nashville Business Center",
       "id": 3
+    },
+    {
+      "id": 4,
+      "name": "This is a NEW Event EDIT",
+      "date": "2019-08-22",
+      "description": "This is a Description of a New Event EDITED",
+      "location": "This is a NEW Location EDITED"
     }
   ],
   "news": [

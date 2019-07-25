@@ -80,14 +80,13 @@ export default class EventEditForm extends Component {
           <Modal.Content>
             <Form>
               <Form.Field required>
-                <label htmlFor="eventName">Event Name</label>
+                <label htmlFor="name">Event Name</label>
                 <input
-                  id="eventName"
+                  id="name"
                   placeholder="Name of Event"
                   onChange={this.handleFieldChange}
                   // -- Add value for Edit Form --//
-                  // -- Also... had to change value to defaultValue in order to fix typing issue... doesn't make sense"
-                  defaultValue={this.state.name}
+                  value={this.state.name}
                 />
               </Form.Field>
               <Form.Field required>

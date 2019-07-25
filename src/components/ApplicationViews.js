@@ -5,7 +5,6 @@ import Tasks from "./tasks/Tasks";
 import Register from "./Login/Registration";
 import Login from "./Login/Login"
 import Messages from "./messages/Messages"
-import RegistrationForm from "./Login/Registration";
 import Events from "./events/Events";
 
 export default class ApplicationViews extends Component {
@@ -13,6 +12,7 @@ export default class ApplicationViews extends Component {
     messages: [],
     tasks: [],
     events: [],
+    users: []
   }
 
   componentDidMount() {
@@ -21,6 +21,8 @@ export default class ApplicationViews extends Component {
       .then(events => newState.events = events)
       .then(() => API.getAll("tasks"))
       .then(tasks => newState.tasks = tasks)
+      .then(() => API.getAll("users"))
+      .then(users => newState.users = users)
       .then(() => API.getAll("messages", "_expand=user"))
       .then(messages => newState.messages = messages)
       .then(() => this.setState(newState))
@@ -82,6 +84,7 @@ export default class ApplicationViews extends Component {
               return <Messages messages={this.state.messages}
               addMessage={this.addMessage}
               deleteMessage={this.deleteMessage}
+              users={this.state.users}
               updateMessage={this.updateMessage}/>
             } else {
               return <Redirect to="/login" />

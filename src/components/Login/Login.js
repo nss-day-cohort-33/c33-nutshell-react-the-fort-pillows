@@ -2,9 +2,9 @@
 import React, { Component } from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import logo from './logo.png'
-import { Link, Redirect } from "react-router-dom"
 import API from "../../module/API"
-
+import { withRouter} from "react-router"
+import Register from './Registration'
 class Login extends Component {
 
   state = {
@@ -43,6 +43,7 @@ class Login extends Component {
               if (this.state.username === data[0].username && this.state.password === data[0].password){
                 console.log("yup")
                 sessionStorage.setItem("id", data[0].id)
+                this.props.setAuthState()
                 this.props.history.push("/")
               } else{
                 window.alert("Please use a valid login or register")
@@ -58,7 +59,7 @@ class Login extends Component {
     return (
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as='h2' color='teal' textAlign='center'>
+          <Header as='h2' color='black' textAlign='center'>
             <Image src={logo} /> Log-in to your account
       </Header>
           <Form size='large'>
@@ -74,13 +75,13 @@ class Login extends Component {
                 onChange={this.handleFieldChange}
               />
 
-              <Button color='teal' fluid size='large' onClick={this.findCurrentUser}>
+              <Button primary fluid size='large' onClick={this.findCurrentUser}>
                 Login
           </Button>
             </Segment>
           </Form>
           <Message>
-            New to us? <Link to={"/register"}>Register</Link>
+            New to us?   <Register />
           </Message>
         </Grid.Column>
       </Grid>
@@ -88,4 +89,4 @@ class Login extends Component {
   }
 }
 
-export default Login
+export default withRouter(Login)

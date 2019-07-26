@@ -30,7 +30,7 @@ state = {
           window.alert("Please update message or delete");
         } else {
           const editedMessage = {
-            userId: 2,
+            userId: this.props.currentUser,
             message: this.state.message,
             id: this.props.message.id,
           };
@@ -43,7 +43,7 @@ state = {
         API.get("messages", this.props.message.id)
         .then(message => {
           this.setState({
-            userId: 2,
+            userId: this.props.currentUser,
             message: message.message,
             id: this.props.message.id
           });

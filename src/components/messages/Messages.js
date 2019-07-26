@@ -5,7 +5,7 @@ import './messages.css'
 
 export default class Messages extends Component {
     state = {
-        userId: 2,
+        userId: "",
         message: "",
     }
 
@@ -21,7 +21,7 @@ export default class Messages extends Component {
         console.log("you clicked")
         evt.preventDefault();
         const message = {
-            userId: this.state.userId,
+            userId: this.props.currentUser,
             message: this.state.message
         };
         this.props.addMessage(message)
@@ -39,7 +39,7 @@ export default class Messages extends Component {
                                 {
                                     this.props.messages.map(message =>
                                      <div key={message.id} >
-                                        <MessageCard className="card" message={message} {...this.props} />
+                                        <MessageCard className="card" message={message} {...this.props} currentUser={this.props.currentUser} />
                                         </div>
                                      /* message.userId === session ? */
                                         /* : */

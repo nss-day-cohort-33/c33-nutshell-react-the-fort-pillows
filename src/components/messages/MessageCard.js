@@ -27,7 +27,7 @@ export default class MessageCard extends Component {
         return (
             <div>
                 <MessageEditForm {...this.props} hidden={this.state.hidden} handleEditClick={this.handleEditClick} updateMesage={this.props.updateMessage}
-                    messsage={this.props.messsage} />
+                    messsage={this.props.messsage} currentUser={this.props.currentUser} />
                 {/* <input type="text" hidden={!this.state.hidden}></input> */}
                 <div className="align" hidden={this.state.hidden}> <div>{this.props.users
                     .filter(user => user.id === this.props.message.userId)
@@ -42,15 +42,7 @@ export default class MessageCard extends Component {
                             <Confirm open={this.state.open} onCancel={this.close} onConfirm={() => this.props.deleteMessage("messages", this.props.message.id)} />
                         </Dropdown.Menu>
                     </Dropdown> : ""
-
                         }
-                    {/* <Dropdown icon="list" direction="right">
-                        <Dropdown.Menu position="right">
-                            <Dropdown.Item icon="pencil" description="Edit" onClick={this.handleEditClick} value={this.props.message.message} />
-                            <Dropdown.Item icon="trash alternate" description="Delete" onClick={this.open} />
-                            <Confirm open={this.state.open} onCancel={this.close} onConfirm={() => this.props.deleteMessage("messages", this.props.message.id)} />
-                        </Dropdown.Menu>
-                    </Dropdown> */}
                 </div>
             </div>
         )

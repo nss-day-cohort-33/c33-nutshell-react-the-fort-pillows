@@ -31,7 +31,7 @@ export default class EventCard extends Component {
             <Card.Content>
               <div className="format-buttons">
                 {/* Had to pass eventId to edit form as match.params only works if id is in path... Modal doesn't need a path... */}
-                <EventEditForm eventId={this.props.event.id} updateEvent={this.props.updateEvent} {...this.props}/>
+                <EventEditForm eventId={this.props.event.id} currentUser={this.props.currentUser} updateEvent={this.props.updateEvent} {...this.props}/>
                 {/* For Confirmation Box */}
                 <Button icon="trash alternate" onClick={this.open} />
                 <Confirm

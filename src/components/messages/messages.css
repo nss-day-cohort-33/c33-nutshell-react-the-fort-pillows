@@ -1,0 +1,20 @@
+.align {
+    display: flex;
+    justify-content: space-between
+}
+
+.messageBox {
+    display: flex;
+    width: 100%;
+
+}
+.max {
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 5%;
+    background-color: white;
+    
+    }
+.card {
+    border: 1px solid lightgray;
+}

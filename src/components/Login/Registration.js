@@ -132,9 +132,6 @@ class Register extends Component {
                 </Button>
               </Segment>
             </Form>
-            <Message>
-              Already a Member? <Link to={"/Login"}>Return to Login</Link>
-            </Message>
           </Grid.Column>
         </Grid>
       </Modal>

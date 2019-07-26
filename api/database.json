@@ -11,6 +11,12 @@
       "email": "smarty@gmail.com",
       "password": "smarty",
       "id": 2
+    },
+    {
+      "username": "joeshep",
+      "email": "joeshep@aol.com",
+      "password": "joe",
+      "id": 3
     }
   ],
   "friends": [],
@@ -24,6 +30,26 @@
       "userId": 2,
       "message": "hey dummy!",
       "id": 2
+    },
+    {
+      "userId": 2,
+      "message": "hey",
+      "id": 3
+    },
+    {
+      "userId": 2,
+      "message": "hey",
+      "id": 5
+    },
+    {
+      "userId": 2,
+      "message": "unline",
+      "id": 6
+    },
+    {
+      "userId": 1,
+      "message": "dumb",
+      "id": 7
     }
   ],
   "tasks": [
@@ -47,47 +73,22 @@
       "date": "2019-03-01",
       "complete": true,
       "id": 3
-    },
-    {
-      "userId": 1,
-      "task": "testthistask",
-      "date": "2019-07-25",
-      "complete": false,
-      "id": 6
     }
   ],
   "events": [
     {
-      "userId": 1,
       "id": 1,
-      "name": "React JS Beginner Seminar!!!",
+      "name": "React JS Beginner Seminar",
       "date": "2019-07-30",
       "description": "JS Seminar to teach developers the basics of React JS",
-      "location": "Nashville Public Library"
+      "location": "Nashville Public Library1"
     },
     {
-      "userId": 1,
+      "id": 2,
       "name": "Semantic-UI Seminar",
       "date": "2019-07-31",
       "description": "Learning the more advanced feature of Semantic-UI and 'themeing'",
-      "location": "Nashville Event Center",
-      "id": 2
-    },
-    {
-      "userId": 1,
-      "id": 3,
-      "name": "Create Video Call with JS!!!!",
-      "date": "2019-08-14",
-      "description": "Seminar about WebCall API to create video call within a web app.",
-      "location": "Nashville Business Center"
-    },
-    {
-      "userId": 1,
-      "id": 4,
-      "name": "This is a NEW Event EDIT",
-      "date": "2019-08-22",
-      "description": "This is a Description of a New Event EDITED",
-      "location": "This is a NEW Location EDITED"
+      "location": "Nashville Event Center1"
     }
   ],
   "news": [
@@ -95,9 +96,16 @@
       "userId": 1,
       "id": 1,
       "url": "https://www.newser.com/story/269443/turns-out-a-cop-station-is-a-bad-place-to-steal-a-bike.html",
-      "title": "Alleged Theft at Cop Station Goes as Well as You'd Expect!!!",
-      "synopsis": "Would-be bike thief caught within seconds: police",
+      "title": "Alleged Theft at Cop Station Goes as Well as You'd Expect",
+      "synopsis": "Would-be bike thief caught within seconds: police1",
       "time": 1562693385246
+    },
+    {
+      "id": 2,
+      "url": "blah",
+      "title": "blah1",
+      "synopsis": "blah",
+      "time": "blah"
     }
   ]
 }

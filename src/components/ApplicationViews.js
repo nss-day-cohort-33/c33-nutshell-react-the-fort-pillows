@@ -28,7 +28,7 @@ export default class ApplicationViews extends Component {
       .then(tasks => newState.tasks = tasks)
       .then(() => API.getAll("users"))
       .then(users => newState.users = users)
-      .then(() => API.getAll("messages", "_expand=user"))
+      .then(() => API.getAll("messages"))
       .then(messages => newState.messages = messages)
       .then(() => API.getAll("news"))
       .then(news => newState.news = news)
@@ -37,7 +37,7 @@ export default class ApplicationViews extends Component {
 
   addMessage = (data) => {
     API.post("messages", data)
-      .then(() => API.getAll("messages", "_expand=user"))
+      .then(() => API.getAll("messages"))
       .then(messages =>
         this.setState({
           messages: messages
@@ -61,7 +61,7 @@ export default class ApplicationViews extends Component {
 //update functions
     updateMessage = (editMessage) => {
       return API.put("messages", editMessage)
-      .then (() => API.getAll("messages", "_expand=user"))
+      .then (() => API.getAll("messages"))
       .then( messages => {
         this.setState({
           messages: messages
@@ -125,8 +125,8 @@ export default class ApplicationViews extends Component {
               addMessage={this.addMessage}
               deleteMessage={this.deleteMessage}
               users={this.state.users}
-              updateMessage={this.updateMessage}/>
-      
+              updateMessage={this.updateMessage}
+              currentUser={this.state.currentUser}/>
             //This will be Dashboard
           }} />
         <Route

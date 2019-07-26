@@ -36,9 +36,9 @@ render() {
             <Dropdown.Item>
               <Link to="/tasks">Tasks</Link>
             </Dropdown.Item>
-            <Dropdown.Item>
+            {/* <Dropdown.Item>
                 <Link to="/friends">Friends</Link>
-            </Dropdown.Item>
+            </Dropdown.Item> */}
           </Dropdown.Menu>
         </Dropdown>
 

@@ -171,15 +171,12 @@ export default class ApplicationViews extends Component {
         />
         <Route
           path="/tasks"
-          //TODO:  Delete this later--FROM Here 2--Joy is using this to test the Tasks component
           render={props => {
             return (
               <Tasks    addTask={this.addTask}
                         updateTask={this.updateTask}
                         tasks={this.state.tasks} />
             );
-            //TODO:  Delete this later--FROM Here 2--Joy is using this to test the Tasks component
-            // return null;
           }}
         />
 

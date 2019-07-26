@@ -80,6 +80,13 @@
       "date": "2019-07-26",
       "complete": true,
       "id": 8
+    },
+    {
+      "userId": 1,
+      "task": "Add this task to db",
+      "date": "2019-07-26",
+      "complete": false,
+      "id": 9
     }
   ],
   "events": [

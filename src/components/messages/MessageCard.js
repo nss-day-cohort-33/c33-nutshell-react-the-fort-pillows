@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Feed, Input, Message, FeedSummary, Button, Icon, Dropdown, Confirm } from 'semantic-ui-react'
 import MessageEditForm from "./MessageEditForm";
 import "./messages.css"
-import MessageDropDownIf from "./MessageIf";
 
 
 export default class MessageCard extends Component {
@@ -12,18 +11,17 @@ export default class MessageCard extends Component {
         open: false
     }
 
+    //bp- this function toggles the hidden features for the edit button.  This hides the message div and unhides the input field and vice versa
     handleEditClick = () => {
-        // preventDefault();
-        // if (this.props.users.id === sessionStorage.getItem("id"))
         this.setState({ hidden: !this.state.hidden })
         console.log("it works!")
     }
 
-
+// bp- this toggles the confirm for the modal form
     open = () => this.setState({ open: true })
     close = () => this.setState({ open: false })
 
-
+// bp - need to call sessionStorage in order to have it available when called
     render() {
         let session = parseInt(sessionStorage.getItem("id"))
         return (

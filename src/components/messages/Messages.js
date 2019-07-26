@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Feed, Input, Message, FeedSummary, Button, Icon, Dropdown, Confirm } from 'semantic-ui-react'
 import MessageCard from './MessageCard';
-import MessageCardNo from './MessageIf';
 import './messages.css'
 
 export default class Messages extends Component {
@@ -10,14 +9,14 @@ export default class Messages extends Component {
         message: "",
     }
 
-    // FeedExampleEventsProp = (events) => <Feed events={events} />
-
+// bp-this takes the field changes for the add meesage field
     handleFieldChange = evt => {
         const stateToChange = {}
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }
-    //TODO: how is userId passed in?
+
+// bp- function to add the new post and posts to the database
     handleClick = evt => {
         console.log("you clicked")
         evt.preventDefault();
@@ -30,9 +29,7 @@ export default class Messages extends Component {
     }
 
 
-    // this.FeedExampleEventsProp(this.props.messages)
     render() {
-        let session = parseInt(sessionStorage.getItem("id"))
         return (
             <React.Fragment>
                 <div className="messageBox">

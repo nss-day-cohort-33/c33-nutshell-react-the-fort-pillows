@@ -22,6 +22,7 @@ state = {
         this.setState(stateToChange)
     }
 
+    //this updates the existing messsage by making a put request to the database
     updateExistingMessage = evt => {
         evt.preventDefault()
         if (this.state.message === "") {

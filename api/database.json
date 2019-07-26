@@ -17,6 +17,12 @@
       "email": "joeshep@aol.com",
       "password": "joe",
       "id": 3
+    },
+    {
+      "name": "joytestuser4",
+      "email": "joytest@joytest.com",
+      "password": "joytestuser4",
+      "id": 4
     }
   ],
   "friends": [],
@@ -57,14 +63,14 @@
       "userId": 1,
       "task": "1st Task Item",
       "date": "2019-01-01",
-      "complete": false,
+      "complete": true,
       "id": 1
     },
     {
       "userId": 2,
       "task": "2nd Task Item",
       "date": "2019-02-01",
-      "complete": false,
+      "complete": true,
       "id": 2
     },
     {
@@ -73,10 +79,46 @@
       "date": "2019-03-01",
       "complete": true,
       "id": 3
+    },
+    {
+      "userId": 1,
+      "task": "testthistask",
+      "date": "2019-07-25",
+      "complete": false,
+      "id": 6
+    },
+    {
+      "userId": 1,
+      "task": "this task",
+      "date": "2019-07-26",
+      "complete": false,
+      "id": 7
+    },
+    {
+      "userId": 1,
+      "task": "testtask0726",
+      "date": "2019-07-26",
+      "complete": true,
+      "id": 8
+    },
+    {
+      "userId": 1,
+      "task": "Add this task to db",
+      "date": "2019-07-26",
+      "complete": true,
+      "id": 9
+    },
+    {
+      "userId": 1,
+      "task": "Add this task to the list please",
+      "date": "2019-07-26",
+      "complete": true,
+      "id": 10
     }
   ],
   "events": [
     {
+      "userId": 1,
       "id": 1,
       "name": "React JS Beginner Seminar",
       "date": "2019-07-30",
@@ -84,11 +126,12 @@
       "location": "Nashville Public Library1"
     },
     {
+      "userId": 1,
       "id": 2,
       "name": "Semantic-UI Seminar",
       "date": "2019-07-31",
       "description": "Learning the more advanced feature of Semantic-UI and 'themeing'",
-      "location": "Nashville Event Center1"
+      "location": "Nashville Event Center11"
     }
   ],
   "news": [
@@ -106,6 +149,14 @@
       "title": "blah1",
       "synopsis": "blah",
       "time": "blah"
+    },
+    {
+      "userId": 1,
+      "url": "http://www.testthisagain.com",
+      "title": "This Article is going!",
+      "synopsis": "This time it works again",
+      "time": "07/24/2018",
+      "id": 3
     }
   ]
 }

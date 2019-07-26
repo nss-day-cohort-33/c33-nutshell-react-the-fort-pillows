@@ -16,7 +16,7 @@ export default class News extends Component {
             {this.props.news.filter(news => news.userId === parseInt(sessionStorage.getItem("id"))).map(news => (
              
               
-              <NewsCard key={news.id} news={news} deleteNews={this.props.deleteNews} updateNews={this.props.updateNews} />
+              <NewsCard key={news.id} currentUser={this.props.currentUser} news={news} deleteNews={this.props.deleteNews} updateNews={this.props.updateNews} />
               
             ))}
         </div>

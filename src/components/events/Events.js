@@ -14,7 +14,7 @@ export default class Events extends Component {
         </div>
         <div className="card-container">
             {this.props.events.filter(event => event.userId === parseInt(sessionStorage.getItem("id"))).map(event => (
-              <EventCard key={event.id} event={event} deleteEvent={this.props.deleteEvent} updateEvent={this.props.updateEvent} {...this.props} />
+              <EventCard key={event.id} currentUser={this.props.currentUser} event={event} deleteEvent={this.props.deleteEvent} updateEvent={this.props.updateEvent} {...this.props} />
             ))}
         </div>
       </React.Fragment>

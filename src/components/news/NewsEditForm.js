@@ -2,12 +2,9 @@ import React, { Component } from "react";
 import { Button, Form, Modal } from "semantic-ui-react";
 import API from "../../module/API";
 
-const buttonMargin = {
-  margin: "2em"
-};
-
 export default class NewsEditForm extends Component {
   state = {
+    userId: "",
     url: "",
     title: "",
     synopsis: "",
@@ -42,6 +39,7 @@ export default class NewsEditForm extends Component {
   updateExistingNews = evt => {
     evt.preventDefault();
     const editedNews = {
+      userId: this.props.currentUser,
       id: this.props.newsId,
       url: this.state.url,
       title: this.state.title,

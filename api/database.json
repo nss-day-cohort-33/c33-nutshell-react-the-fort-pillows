@@ -59,11 +59,11 @@
   "events": [
     {
       "userId": 1,
-      "name": "React JS Beginner Seminar",
+      "id": 1,
+      "name": "React JS Beginner Seminar!!!",
       "date": "2019-07-30",
       "description": "JS Seminar to teach developers the basics of React JS",
-      "location": "Nashville Public Library",
-      "id": 1
+      "location": "Nashville Public Library"
     },
     {
       "userId": 1,
@@ -93,11 +93,11 @@
   "news": [
     {
       "userId": 1,
+      "id": 1,
       "url": "https://www.newser.com/story/269443/turns-out-a-cop-station-is-a-bad-place-to-steal-a-bike.html",
-      "title": "Alleged Theft at Cop Station Goes as Well as You'd Expect",
+      "title": "Alleged Theft at Cop Station Goes as Well as You'd Expect!!!",
       "synopsis": "Would-be bike thief caught within seconds: police",
-      "time": 1562693385246,
-      "id": 1
+      "time": 1562693385246
     }
   ]
 }

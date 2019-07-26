@@ -93,6 +93,13 @@ export default class ApplicationViews extends Component {
       tasks: tasks
     }))
   }
+
+  updateTask = (resource, id) => {
+    API.put(resource, id)
+    .then(() => API.getAll("tasks"))
+    .then(tasks => this.setState({tasks:tasks}))
+  }
+
   deleteNews = (database, id) => {
     API.delete(database, id)
     .then(news =>
@@ -168,6 +175,7 @@ export default class ApplicationViews extends Component {
           render={props => {
             return (
               <Tasks    addTask={this.addTask}
+                        updateTask={this.updateTask}
                         tasks={this.state.tasks} />
             );
             //TODO:  Delete this later--FROM Here 2--Joy is using this to test the Tasks component

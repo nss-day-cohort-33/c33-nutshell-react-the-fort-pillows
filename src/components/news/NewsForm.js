@@ -1,23 +1,26 @@
 import React, { Component } from "react";
 import { Button, Form, Modal, Icon } from "semantic-ui-react";
 
+
 const buttonMargin = {
   margin: "2em"
-};
+}
 
 export default class NewsForm extends Component {
   state = {
+    userId: "",
     url: "",
     title: "",
     synopsis: "",
     time: "",
-    open: false 
+    open: false
     //-- This is et to false to keep the modal closed when the user visits the page --//
   };
 
-toggle = () => {
-  this.setState({modalOpen: !this.state.modalOpen})
-}
+
+  toggle = () => {
+    this.setState({ modalOpen: !this.state.modalOpen });
+  };
 
   handleFieldChange = evt => {
     const stateToChange = {};
@@ -28,13 +31,14 @@ toggle = () => {
   constructNewNews = evt => {
     evt.preventDefault();
     const news = {
+      userId: this.props.currentUser,
       url: this.state.url,
       title: this.state.title,
       synopsis: this.state.synopsis,
       time: this.state.time
     };
     this.props.addNews(news);
-    this.toggle()
+    this.toggle();
     //--This toggle will close the Modal upon click --//
   };
 
@@ -42,10 +46,15 @@ toggle = () => {
     return (
       <div>
         <Modal
-        
           trigger={
             //-- Put toggle in trigger to make Modal appear on click --//
-            <Button primary icon labelPosition="left" style={buttonMargin} onClick={this.toggle}>
+            <Button
+              primary
+              icon
+              labelPosition="left"
+              style={buttonMargin}
+              onClick={this.toggle}
+            >
               <Icon name="add" />
               Add News Article
             </Button>
@@ -53,7 +62,11 @@ toggle = () => {
           //-sets state of Modal to current state--//
           open={this.state.modalOpen}
         >
-          <div className="closeButton"><Modal.Header><Button icon="window close" onClick={this.toggle} /></Modal.Header></div>
+          <div className="closeButton">
+            <Modal.Header>
+              <Button icon="window close" onClick={this.toggle} />
+            </Modal.Header>
+          </div>
           <Modal.Header>Add Your Article</Modal.Header>
           <Modal.Content>
             <Form>

@@ -37,7 +37,7 @@ export default class NewsCard extends Component {
             <Card.Content>
               <div className="format-buttons">
                 {/* Had to pass newsId to edit form as match.params only works if id is in path... Modal doesn't need a path... */}
-                <NewsEditForm newsId={this.props.news.id} updateNews={this.props.updateNews} />
+                <NewsEditForm newsId={this.props.news.id} currentUser={this.props.currentUser} updateNews={this.props.updateNews} />
                 {/* For Confirmation Box */}
                 <Button icon="trash alternate" onClick={this.open} />
                 <Confirm

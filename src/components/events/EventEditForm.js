@@ -10,6 +10,7 @@ const buttonMargin = {
 
 export default class EventEditForm extends Component {
   state = {
+    userId: "",
     name: "",
     date: "",
     description: "",
@@ -47,6 +48,7 @@ export default class EventEditForm extends Component {
   updateExistingEvent = evt => {
     evt.preventDefault();
     const editedEvent = {
+      userId: this.props.currentUser,
       id: this.props.eventId,
       name: this.state.name,
       date: this.state.date,

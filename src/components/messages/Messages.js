@@ -1,46 +1,52 @@
 import React, { Component } from 'react'
 import { Feed, Input, Message, FeedSummary, Button, Icon, Dropdown, Confirm } from 'semantic-ui-react'
 import MessageCard from './MessageCard';
+import './messages.css'
 
 export default class Messages extends Component {
     state = {
-        userId: 2,
+        userId: "",
         message: "",
     }
 
-    // FeedExampleEventsProp = (events) => <Feed events={events} />
-
+// bp-this takes the field changes for the add meesage field
     handleFieldChange = evt => {
         const stateToChange = {}
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }
-    //TODO: how is userId passed in?
+
+// bp- function to add the new post and posts to the database
     handleClick = evt => {
         console.log("you clicked")
         evt.preventDefault();
         const message = {
-            userId: this.state.userId,
+            userId: this.props.currentUser,
             message: this.state.message
         };
         this.props.addMessage(message)
+
     }
 
 
-    // this.FeedExampleEventsProp(this.props.messages)
     render() {
         return (
             <React.Fragment>
-                <div className="ui padded grid">
+                <div className="messageBox">
                     <Message floating>
-                        <Feed>
+                        <Feed className="max" maxline={5}>
                             <FeedSummary>
                                 {
                                     this.props.messages.map(message =>
-                                    <div key={message.id}>
-                                        <MessageCard message={message} {...this.props} />
-                                    </div>)
-                                }
+                                     <div key={message.id} >
+                                        <MessageCard className="card" message={message} {...this.props} currentUser={this.props.currentUser} />
+                                        </div>
+                                     /* message.userId === session ? */
+                                        /* : */
+                                            /* <div key={message.id}>
+                                                <MessageCardNo message={message} {...this.props} />
+                                            </div> */
+                                    )}
                             </FeedSummary>
                         </Feed>
                         <div>

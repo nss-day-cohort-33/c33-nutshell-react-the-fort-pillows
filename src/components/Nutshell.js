@@ -1,21 +1,41 @@
 import React, { Component } from "react";
-import LoginForm from "./Login/Login"
 import NavBar from "./nav/NavBar";
+import Login from "./Login/Login"
 import ApplicationViews from "./ApplicationViews";
+import Register from "./Login/Registration"
 import "./Nutshell.css";
 import 'semantic-ui-css/semantic.min.css'
-import RegistrationForm from "./Login/Registration";
-
+// isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 class Nutshell extends Component {
+
+    state = {
+      authenticated: sessionStorage.getItem("id")
+    }
+    
+    setAuthState = () => {
+      if( sessionStorage.getItem("id")) {
+        this.setState({authenticated: true})
+      } else {
+        this.setState({authenticated: false})
+      }
+    }
+
   render() {
+    if(this.state.authenticated) {
+      return(
+      <React.Fragment>
+        <NavBar />
+        <ApplicationViews isAuthenticated={this.state.authenticated} />
+      </React.Fragment>
+      )
+    } else {
     return (
       <React.Fragment>
-      {/* <LoginForm /> */}
-      {/* <RegistrationForm /> */}
-        <NavBar />
-        <ApplicationViews />
+      <Login setAuthState={this.setAuthState} />
       </React.Fragment>
+    
     );
+    }
   }
 }
 

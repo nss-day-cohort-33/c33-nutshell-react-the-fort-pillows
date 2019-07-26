@@ -16,7 +16,8 @@ export default class ApplicationViews extends Component {
     tasks: [],
     events: [],
     users: [],
-    news: []
+    news: [],
+    currentUser: parseInt(sessionStorage.getItem("id"))
   }
 
   componentDidMount() {
@@ -27,7 +28,7 @@ export default class ApplicationViews extends Component {
       .then(tasks => newState.tasks = tasks)
       .then(() => API.getAll("users"))
       .then(users => newState.users = users)
-      .then(() => API.getAll("messages", "_expand=user"))
+      .then(() => API.getAll("messages"))
       .then(messages => newState.messages = messages)
       .then(() => API.getAll("news"))
       .then(news => newState.news = news)
@@ -36,7 +37,7 @@ export default class ApplicationViews extends Component {
 
   addMessage = (data) => {
     API.post("messages", data)
-      .then(() => API.getAll("messages", "_expand=user"))
+      .then(() => API.getAll("messages"))
       .then(messages =>
         this.setState({
           messages: messages
@@ -60,7 +61,7 @@ export default class ApplicationViews extends Component {
 //update functions
     updateMessage = (editMessage) => {
       return API.put("messages", editMessage)
-      .then (() => API.getAll("messages", "_expand=user"))
+      .then (() => API.getAll("messages"))
       .then( messages => {
         this.setState({
           messages: messages
@@ -68,7 +69,7 @@ export default class ApplicationViews extends Component {
       })
     }
 //this confirm authentication
-  isAuthenticated = () => sessionStorage.getItem("credentials") !== null
+  // isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
   addNews = (data) => {
     API.post("news", data)
@@ -127,40 +128,24 @@ export default class ApplicationViews extends Component {
           exact
           path="/"
           render={(props) => {
-            if (this.isAuthenticated()) {
               return <Messages messages={this.state.messages}
               addMessage={this.addMessage}
               deleteMessage={this.deleteMessage}
               users={this.state.users}
-              updateMessage={this.updateMessage}/>
-            } else {
-              return <Redirect to="/login" />
-            };
+              updateMessage={this.updateMessage}
+              currentUser={this.state.currentUser}/>
             //This will be Dashboard
           }} />
         <Route
-          exact
-          path="/login"
-          render={props => {
-            return null;
-          }} />
-        <Route
-          exact
-          path="/register"
-          render={props => {
-            return null
-          }}
-        />
-        <Route
           exact path="/news"
           render={props => {
-            return <News {...props} news={this.state.news} deleteNews={this.deleteNews} addNews={this.addNews} updateNews={this.updateNews} />;
+            return <News {...props} currentUser={this.state.currentUser} news={this.state.news} deleteNews={this.deleteNews} addNews={this.addNews} updateNews={this.updateNews} />;
           }}
         />
         <Route
           path="/events"
           render={props => {
-            return <Events {...props} events={this.state.events} deleteEvent={this.deleteEvent} addEvent={this.addEvent} updateEvent={this.updateEvent} />;
+            return <Events {...props} currentUser={this.state.currentUser} events={this.state.events} deleteEvent={this.deleteEvent} addEvent={this.addEvent} updateEvent={this.updateEvent} />;
           }}
         />
         <Route

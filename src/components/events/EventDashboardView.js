@@ -17,7 +17,7 @@ export default class EventDashboardView extends Component {
         <Link to="/events"><h1>Events</h1></Link>
         <div>
           <List celled>
-            {this.props.events.map(event => (
+          {this.props.events.filter(event => event.userId === parseInt(sessionStorage.getItem("id"))).map(event => (
               <List.Item>
                 <Icon name="calendar" />
                 <List.Content>

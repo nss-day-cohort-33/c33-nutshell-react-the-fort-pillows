@@ -1,15 +1,20 @@
 import React, { Component } from "react";
 import { Button, Dropdown, Menu, Icon } from "semantic-ui-react";
-import { Link, Redirect } from "react-router-dom";
+import { Link, withRouter} from "react-router-dom";
 import './NavBar.css'
 
-export default class NavBar extends Component {
+
+class NavBar extends Component {
   state = { activeItem: "",
             redirect: false};
   //--Above not in use yet--//
+ // handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+ handleLogOut = () => {
+   sessionStorage.clear()
+   this.props.history.push("/")
+   window.location.reload();
+ }
 
 render() {
     return (
@@ -31,9 +36,9 @@ render() {
             <Dropdown.Item>
               <Link to="/tasks">Tasks</Link>
             </Dropdown.Item>
-            <Dropdown.Item>
+            {/* <Dropdown.Item>
                 <Link to="/friends">Friends</Link>
-            </Dropdown.Item>
+            </Dropdown.Item> */}
           </Dropdown.Menu>
         </Dropdown>
 
@@ -62,3 +67,4 @@ render() {
 /> */
 }
 
+export default withRouter(NavBar)

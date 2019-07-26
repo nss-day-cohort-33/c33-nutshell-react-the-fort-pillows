@@ -10,11 +10,11 @@ export default class Events extends Component {
       <React.Fragment>
         <div className="events-header">
           <h1>Events Calendar</h1>
-          <EventForm addEvent={this.props.addEvent} {...this.props} />
+          <EventForm addEvent={this.props.addEvent} currentUser={this.props.currentUser} {...this.props} />
         </div>
         <div className="card-container">
-            {this.props.events.map(event => (
-              <EventCard key={event.id} event={event} deleteEvent={this.props.deleteEvent} updateEvent={this.props.updateEvent} {...this.props} />
+            {this.props.events.filter(event => event.userId === parseInt(sessionStorage.getItem("id"))).map(event => (
+              <EventCard key={event.id} currentUser={this.props.currentUser} event={event} deleteEvent={this.props.deleteEvent} updateEvent={this.props.updateEvent} {...this.props} />
             ))}
         </div>
       </React.Fragment>
